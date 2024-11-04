@@ -112,7 +112,7 @@ class _ProductItemState extends State<ProductItem> {
 
   Widget _buildContent() {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         verticalSpacing(5),
         GestureDetector(
@@ -157,9 +157,9 @@ class _ProductItemState extends State<ProductItem> {
             maxLines: 1,
           ),
         ),
-        verticalSpacing(10),
+       widget.product.oldPrice != widget.product.price  ? verticalSpacing(10) : verticalSpacing(20),
         Text(
-          "${widget.product.price} EPG",
+          "${widget.product.price} EGP",
           style: TextStyle(
             color: AppColors.moreGold,
           ),
@@ -168,7 +168,7 @@ class _ProductItemState extends State<ProductItem> {
         Visibility(
           visible: widget.product.oldPrice != widget.product.price,
           child: Text(
-            widget.product.oldPrice.toString() + " " + "EPG",
+            "${widget.product.oldPrice} EGP",
             style: TextStyle(
               color: AppColors.error,
               decoration: TextDecoration.lineThrough,
@@ -208,7 +208,7 @@ class _ProductItemState extends State<ProductItem> {
             ],
           ),
         ),
-        verticalSpacing(10),
+        verticalSpacing(15),
       ],
     );
   }
