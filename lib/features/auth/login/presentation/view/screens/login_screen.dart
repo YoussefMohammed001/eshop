@@ -32,6 +32,7 @@ class _LoginScreenState extends State<LoginScreen> {
               children: [
                 verticalSpacing(50),
                 AppLogo(),
+                verticalSpacing(20),
                 Center(
                   child: Text(
                     S().login,

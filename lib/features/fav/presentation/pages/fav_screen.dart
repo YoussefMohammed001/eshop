@@ -57,7 +57,8 @@ class _FavScreenState extends State<FavScreen> {
                 padding: EdgeInsets.zero,
                 itemCount: 7,
                 itemBuilder: (BuildContext context, int index) {
-                  return ProductItem(isLoading: isLoading);
+                  SizedBox();
+                  // return ProductItem(isLoading: isLoading);
                 },
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,

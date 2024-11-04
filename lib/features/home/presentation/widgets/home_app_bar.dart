@@ -45,11 +45,10 @@ class HomeAppBar extends StatelessWidget {
           Row(
             children: [
             AppSVG(assetName: "home_location",
-              color: MyShared.getThemeMode() == ThemeMode.dark ? AppColors.primaryDarkTheme : AppColors.primary,
+              color: MyShared.getThemeMode() == ThemeMode.dark ? AppColors.notPureWhite : AppColors.primary,
             ),
             horizontalSpacing(10),
             Text("Cairo, Egypt", style: TextStyle(
-
               color: MyShared.getThemeMode() == ThemeMode.dark ? AppColors.notPureWhite : AppColors.darkGrey
             )),
             Spacer(),

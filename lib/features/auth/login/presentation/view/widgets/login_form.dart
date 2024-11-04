@@ -4,7 +4,6 @@ import 'package:eshop/core/utils/navigators.dart';
 import 'package:eshop/core/utils/safe_print.dart';
 import 'package:eshop/core/utils/snack.dart';
 import 'package:eshop/core/utils/spacing.dart';
-import 'package:eshop/core/utils/svg.dart';
 import 'package:eshop/core/widgets/app_button.dart';
 import 'package:eshop/core/widgets/app_text_field.dart';
 import 'package:eshop/features/auth/login/presentation/manager/login_cubit.dart';
@@ -83,7 +82,7 @@ class _LoginFormState extends State<LoginForm> {
                 alignment: Alignment.centerRight,
                 child: Text(S().forgetPassword,
                     style: TextStyle(
-                        color: AppColors.gold,
+                        color: AppColors.primary,
                         fontWeight: FontWeight.w600,
                         fontSize: 14.sp)),
               ),

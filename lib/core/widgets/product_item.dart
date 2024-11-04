@@ -4,18 +4,26 @@ import 'package:eshop/core/styles/colors.dart';
 import 'package:eshop/core/utils/navigators.dart';
 import 'package:eshop/core/utils/spacing.dart';
 import 'package:eshop/core/utils/svg.dart';
+import 'package:eshop/features/home/domain/entities/home_entities.dart';
 import 'package:eshop/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer/shimmer.dart';
 
-class ProductItem extends StatelessWidget {
+class ProductItem extends StatefulWidget {
   final bool isLoading; // Add a loading state parameter
-  const ProductItem({super.key, this.isLoading = true}); // Default to false
+   HomeProductsEntities product;
+   ProductItem(
+      {super.key,
+      required this.isLoading,
+      required this.product,
+      });
+  @override
+  State<ProductItem> createState() => _ProductItemState();
+}
 
-
-
-
+class _ProductItemState extends State<ProductItem> {
+ // Default to false
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -25,15 +33,16 @@ class ProductItem extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 12.sp),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10.r),
-        border: Border.all(color: AppColors.grey
-
-        ),
+        border: Border.all(color: AppColors.grey),
       ),
-      child: isLoading ? _buildShimmer() : InkWell(
-          onTap: (){
-            pushNamed(context, Routes.productDetailsScreen);
-          },
-          child: _buildContent()), // Use shimmer or content based on loading state
+      child: widget.isLoading == true
+          ? _buildShimmer()
+          : InkWell(
+              onTap: () {
+                pushNamed(context, Routes.productDetailsScreen);
+              },
+              child:
+                  _buildContent()), // Use shimmer or content based on loading state
     );
   }
 
@@ -106,46 +115,67 @@ class ProductItem extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         verticalSpacing(5),
-        Container(
-          alignment: Alignment.topRight,
-          child: CircleAvatar(
-            radius: 15.r,
-            backgroundColor: AppColors.darkGrey.withOpacity(0.5),
-            child: Icon(
-              Icons.favorite_border,
-              color: Colors.white,
-              size: 15.sp,
+        GestureDetector(
+          onTap: (){
+            widget.product.isInFavorite = !widget.product.isInFavorite;
+            setState(() {
+
+            });
+          },
+          child: Container(
+            alignment: Alignment.topRight,
+            child: CircleAvatar(
+              radius: 15.r,
+              backgroundColor: AppColors.darkGrey.withOpacity(0.5),
+              child: Icon(
+                widget.product.isInFavorite ? Icons.favorite  :     Icons.favorite_border,
+                color: Colors.white,
+                size: 15.sp,
+              ),
             ),
           ),
         ),
         CircleAvatar(
-          radius: 27.r,
+          radius: 34.r,
           backgroundImage: NetworkImage(
-            "https://plus.unsplash.com/premium_photo-1661368209998-6965fb87c600?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGlwaG9uZSUyMHdpdGglMjBiYWNrZ3JvdW5kJTIwd2hpdGV8ZW58MHx8MHx8fDA%3D",
+            widget.product.image,
+
           ),
         ),
-        verticalSpacing(5),
-        Text(
-          "Iphone 16",
-          style: TextStyle(
-            color: MyShared.getThemeMode() == ThemeMode.dark ? AppColors.notPureWhite: AppColors.notPureBlack,
-            fontWeight: FontWeight.w600,
+        verticalSpacing(10),
+        Center(
+          child: Text(
+            widget.product.name,
+            style: TextStyle(
+              color: MyShared.getThemeMode() == ThemeMode.dark
+                  ? AppColors.notPureWhite
+                  : AppColors.notPureBlack,
+              fontWeight: FontWeight.w600,
+
+            ),
+            textAlign: TextAlign.center,
+            maxLines: 1,
           ),
         ),
-        verticalSpacing(5),
+        verticalSpacing(10),
         Text(
-          "IStore",
-          style: TextStyle(
-            color:MyShared.getThemeMode() == ThemeMode.dark ? AppColors.grey: AppColors.darkGrey,
-          ),
-        ),
-        verticalSpacing(5),
-        Text(
-          "SAR 920.00",
+          "${widget.product.price} EPG",
           style: TextStyle(
             color: AppColors.moreGold,
           ),
         ),
+        verticalSpacing(10),
+        Visibility(
+          visible: widget.product.oldPrice != widget.product.price,
+          child: Text(
+            widget.product.oldPrice.toString() + " " + "EPG",
+            style: TextStyle(
+              color: AppColors.error,
+              decoration: TextDecoration.lineThrough,
+            ),
+          ),
+        ),
+        verticalSpacing(10),
         Spacer(),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -153,13 +183,17 @@ class ProductItem extends StatelessWidget {
             Text(
               S().addToCart,
               style: TextStyle(
-                color: MyShared.getThemeMode() == ThemeMode.dark ? AppColors.notPureWhite : AppColors.primary,
+                color: MyShared.getThemeMode() == ThemeMode.dark
+                    ? AppColors.notPureWhite
+                    : AppColors.primary,
                 fontWeight: FontWeight.w800,
               ),
             ),
             horizontalSpacing(5),
-            AppSVG(assetName:  MyShared.getThemeMode() == ThemeMode.dark ? "add_to_cart_pd":"add_to_cart_home",
-              color: MyShared.getThemeMode() == ThemeMode.dark ? AppColors.notPureWhite : AppColors.primary,
+            AppSVG(
+              assetName: MyShared.getThemeMode() == ThemeMode.dark
+                  ? "add_to_cart_pd"
+                  : "add_to_cart_home",
             ),
           ],
         ),
@@ -167,8 +201,4 @@ class ProductItem extends StatelessWidget {
       ],
     );
   }
-
-
-
-
 }

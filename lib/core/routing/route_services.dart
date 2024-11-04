@@ -14,7 +14,6 @@ import 'package:eshop/features/settings/presentation/view/help_screen.dart';
 import 'package:eshop/features/settings/presentation/view/report_screen.dart';
 import 'package:eshop/features/settings/presentation/view/settings_screen.dart';
 import 'package:eshop/features/splash/splash_screen.dart';
-import 'package:eshop/features/store_profile/presentation/pages/store_profile_screen.dart';
 import 'package:flutter/material.dart';
 
 class RouteServices {
@@ -66,10 +65,6 @@ class RouteServices {
       case Routes.helpScreen:
         return MaterialPageRoute(
           builder: (_) => HelpScreen(),
-        );
-        case Routes.storeProfileScreen:
-        return MaterialPageRoute(
-          builder: (_) => StoreProfileScreen(),
         );
         case Routes.profileScreen:
         return MaterialPageRoute(

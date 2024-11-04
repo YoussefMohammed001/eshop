@@ -9,21 +9,15 @@ class AppLogo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return                 Container(
-      decoration: BoxDecoration(
-          color: MyShared.getThemeMode() == ThemeMode.dark ? AppColors.notPureWhite.withOpacity(0.5) :Colors.transparent,
-          borderRadius: BorderRadius.circular(20.r)
-      ),
-      child: AppAssetImage(
-        image: "logo",
-        height: 165.h,
-        width: 163.w,
-        topLeftRadius: 0,
-        topRightRadius: 0,
-        bottomLeftRadius: 0,
-        bottomRightRadius: 0,
-        fit: BoxFit.contain,
-      ),
+    return                 AppAssetImage(
+      image: "logo",
+      height: 180.h,
+      width: 280.w,
+      topLeftRadius: 0,
+      topRightRadius: 0,
+      bottomLeftRadius: 0,
+      bottomRightRadius: 0,
+      fit: BoxFit.contain,
     );
   }
 }

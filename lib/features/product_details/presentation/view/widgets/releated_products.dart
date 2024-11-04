@@ -37,7 +37,8 @@ class ReleatedProducts extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             itemCount: 20,
             itemBuilder: (BuildContext context, int index) {
-              return ProductItem(isLoading: false,);
+              return SizedBox();
+              // return ProductItem(isLoading: false, product: );
             },),
         ),
         verticalSpacing(10),
