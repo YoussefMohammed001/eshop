@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "780734890152",
+    "project_id": "shop-cd491",
+    "storage_bucket": "shop-cd491.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:780734890152:android:51141197edb2deb7f0029d",
+        "android_client_info": {
+          "package_name": "com.example.eshop"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIn4d4sIE_VlqhQ_6xk_IfqDUK5SB5z_E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
