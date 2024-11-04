@@ -102,5 +102,6 @@
   "deleteAccountText1": "1- Permanent Data Loss: Once you delete your account, all your data, including personal information, preferences, and activity history, will be permanently removed from our servers. This action is irreversible, and we will not be able to recover any deleted information.",
   "deleteAccountText2": "2- Loss of Access: You will no longer have access to your account, and all associated services and benefits will be terminated. This includes access to any premium features, saved content, and ongoing subscriptions.",
   "deleteAccountText3": "3- Termination of Subscriptions: If you have any active subscriptions, they will be automatically canceled upon account deletion. Please ensure to manage any necessary changes or cancellations before proceeding.",
-  "topRated": "Top Rated"
+  "topRated": "Top Rated",
+  "removeFromCart": "Remove from Cart"
 }

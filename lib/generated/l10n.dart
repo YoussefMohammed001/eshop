@@ -1089,6 +1089,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Remove from Cart`
+  String get removeFromCart {
+    return Intl.message(
+      'Remove from Cart',
+      name: 'removeFromCart',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

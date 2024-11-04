@@ -137,6 +137,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "register": MessageLookupByLibrary.simpleMessage("Register"),
         "relatedProducts":
             MessageLookupByLibrary.simpleMessage("Related Products"),
+        "removeFromCart":
+            MessageLookupByLibrary.simpleMessage("Remove from Cart"),
         "report": MessageLookupByLibrary.simpleMessage("Report"),
         "resend": MessageLookupByLibrary.simpleMessage("RESEND"),
         "save": MessageLookupByLibrary.simpleMessage("Save"),

@@ -137,6 +137,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "register": MessageLookupByLibrary.simpleMessage("التسجيل"),
         "relatedProducts":
             MessageLookupByLibrary.simpleMessage("منتجات ذات صلة"),
+        "removeFromCart": MessageLookupByLibrary.simpleMessage("حذف من السلة"),
         "report": MessageLookupByLibrary.simpleMessage("الإبلاغ"),
         "resend": MessageLookupByLibrary.simpleMessage("إعادة إرسال"),
         "save": MessageLookupByLibrary.simpleMessage("حفظ"),

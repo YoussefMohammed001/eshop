@@ -177,25 +177,36 @@ class _ProductItemState extends State<ProductItem> {
         ),
         verticalSpacing(10),
         Spacer(),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              S().addToCart,
+        InkWell(
+          onTap: (){
+            widget.product.isInCart = !widget.product.isInCart;
+            setState(() {
+
+            });
+          },
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                widget.product.isInCart ? S().removeFromCart : S().addToCart,
               style: TextStyle(
-                color: MyShared.getThemeMode() == ThemeMode.dark
-                    ? AppColors.notPureWhite
-                    : AppColors.primary,
-                fontWeight: FontWeight.w800,
+
+                  color: MyShared.getThemeMode() == ThemeMode.dark
+                      ?  widget.product.isInCart ? AppColors.error : AppColors.primary
+                      :  widget.product.isInCart ? AppColors.error : AppColors.primary,
+                  fontWeight: FontWeight.w800,
+
+                ),
               ),
-            ),
-            horizontalSpacing(5),
-            AppSVG(
-              assetName: MyShared.getThemeMode() == ThemeMode.dark
-                  ? "add_to_cart_pd"
-                  : "add_to_cart_home",
-            ),
-          ],
+              horizontalSpacing(5),
+              AppSVG(
+                assetName: MyShared.getThemeMode() == ThemeMode.dark
+                    ? "add_to_cart_pd"
+                    : "add_to_cart_home",
+                color:   widget.product.isInCart ? AppColors.error : AppColors.primary,
+              ),
+            ],
+          ),
         ),
         verticalSpacing(10),
       ],

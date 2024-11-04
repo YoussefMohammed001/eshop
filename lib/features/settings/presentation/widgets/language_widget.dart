@@ -1,8 +1,6 @@
 import 'package:eshop/core/cubits/language/language_cubit.dart';
-import 'package:eshop/core/routing/routes.dart';
 import 'package:eshop/core/shared_preferences/my_shared.dart';
 import 'package:eshop/core/styles/colors.dart';
-import 'package:eshop/core/utils/navigators.dart';
 import 'package:eshop/core/utils/spacing.dart';
 import 'package:eshop/core/utils/svg.dart';
 import 'package:eshop/generated/l10n.dart';
@@ -20,20 +18,16 @@ class LanguageWidget extends StatefulWidget {
 class _LanguageWidgetState extends State<LanguageWidget> {
   @override
   Widget build(BuildContext context) {
-    return    InkWell(
-      onTap: (){
-        if(MyShared.getCurrentLanguage() == "ar"){
+    return InkWell(
+      onTap: () {
+        if (MyShared.getCurrentLanguage() == "ar") {
           context.read<AppCubit>().changeLanguageToEn();
-
-        }else{
+        } else {
           context.read<AppCubit>().changeLanguageToAr();
-
         }
       },
       child: Container(
-        margin: EdgeInsets.symmetric(
-            vertical: 8.sp
-        ),
+        margin: EdgeInsets.symmetric(vertical: 8.sp),
         width: 338.w,
         height: 50.h,
         decoration: BoxDecoration(
@@ -41,27 +35,30 @@ class _LanguageWidgetState extends State<LanguageWidget> {
               color: MyShared.getThemeMode() == ThemeMode.dark
                   ? AppColors.grey.withOpacity(0.5)
                   : Colors.transparent),
-          color: MyShared.getThemeMode()  == ThemeMode.dark
+          color: MyShared.getThemeMode() == ThemeMode.dark
               ? Colors.transparent
               : AppColors.grey.withOpacity(0.5),
           borderRadius: BorderRadius.circular(10.r),
         ),
-        padding: EdgeInsets.symmetric(
-            horizontal: 15.sp
-        ),
+        padding: EdgeInsets.symmetric(horizontal: 15.sp),
         child: Row(
           children: [
-            AppSVG(assetName: "language",
-            color: MyShared.getThemeMode() == ThemeMode.dark ? AppColors.notPureWhite : AppColors.primary,
+            AppSVG(
+              assetName: "language",
+              color: MyShared.getThemeMode() == ThemeMode.dark
+                  ? AppColors.notPureWhite
+                  : AppColors.primary,
             ),
             horizontalSpacing(20),
             Expanded(child: Text(S().language)),
-            Text( MyShared.getCurrentLanguage() == "ar" ? "عربي" : "English",
+            Text(
+              MyShared.getCurrentLanguage() == "ar" ? "عربي" : "English",
               style: TextStyle(
-                  color:MyShared.getThemeMode() == ThemeMode.dark ? AppColors.notPureWhite : AppColors.primary,
+                  color: MyShared.getThemeMode() == ThemeMode.dark
+                      ? AppColors.notPureWhite
+                      : AppColors.primary,
                   fontSize: 12.sp,
-                  fontWeight: FontWeight.w700
-              ),
+                  fontWeight: FontWeight.w700),
             ),
           ],
         ),

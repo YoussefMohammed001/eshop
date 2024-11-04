@@ -1,5 +1,4 @@
 import 'package:eshop/core/cubits/language/language_cubit.dart';
-import 'package:eshop/core/cubits/language/language_state.dart';
 import 'package:eshop/core/shared_preferences/my_shared.dart';
 import 'package:eshop/core/styles/colors.dart';
 import 'package:eshop/core/utils/spacing.dart';
@@ -47,9 +46,7 @@ class _ThemeWidgetState extends State<ThemeWidget> {
           Transform.scale(
             scale: 0.5.sp,
             child: CupertinoSwitch(
-              value: context.read<AppCubit>().state is ChangeThemeState
-                  ? (context.read<AppCubit>().state as ChangeThemeState).themeMode == ThemeMode.light
-                  : MyShared.getThemeMode() == ThemeMode.dark,  // Use the cubit state if available, fallback to shared preferences
+              value: MyShared.getThemeMode() == ThemeMode.light,  // Use the cubit state if available, fallback to shared preferences
               onChanged: (bool value) {
                 // Toggle the theme when the switch is changed
               MyShared.getThemeMode() == ThemeMode.dark ? context.read<AppCubit>().changeThemeToLight() : context.read<AppCubit>().changeThemeToDark();
