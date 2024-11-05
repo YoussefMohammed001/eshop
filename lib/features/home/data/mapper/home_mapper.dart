@@ -1,3 +1,4 @@
+import 'package:eshop/core/entities/product_entity.dart';
 import 'package:eshop/core/utils/safe_print.dart';
 import 'package:eshop/features/home/data/models/home_response.dart';
 import 'package:eshop/features/home/domain/entities/home_entities.dart';
@@ -19,8 +20,8 @@ class HomeMapper {
     );
   }
 
-  static HomeProductsEntities mapToProductEntity(HomeProducts product) {
-    return HomeProductsEntities(
+  static ProductEntities mapToProductEntity(HomeProducts product) {
+    return ProductEntities(
       id: product.id,
       image: product.image,
       name: product.name,

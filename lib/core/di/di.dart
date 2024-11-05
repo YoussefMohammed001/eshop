@@ -9,6 +9,11 @@ import 'package:eshop/features/home/data/repositories/home_repo.dart';
 import 'package:eshop/features/home/domain/repositories/base_home_repo.dart';
 import 'package:eshop/features/home/domain/use_cases/home_usecase.dart';
 import 'package:eshop/features/home/presentation/manager/home_cubit.dart';
+import 'package:eshop/features/products/data/data_sources/categories_api.dart';
+import 'package:eshop/features/products/data/repositories/categories_repo.dart';
+import 'package:eshop/features/products/domain/repositories/category_products_base_repo.dart';
+import 'package:eshop/features/products/domain/use_cases/products_categories_usecase.dart';
+import 'package:eshop/features/products/presentation/manager/category_products_cubit.dart';
 import 'package:get_it/get_it.dart';
 
 final getIt = GetIt.instance;
@@ -29,8 +34,21 @@ Future<void> setupGetIt() async {
   // HOME
   getIt.registerLazySingleton<HomeUseCase>(() => HomeUseCase( baseHomeRepo: getIt()));
   getIt.registerLazySingleton<HomeCubit>(() => HomeCubit(getIt()));
-
   getIt.registerLazySingleton<BaseHomeRepo>(() => HomeRepoImpl(homeApi: getIt()));
   getIt.registerLazySingleton<HomeApi>(() => HomeApi());
+
+
+
+
+
+  // CATEGORIES
+  getIt.registerLazySingleton<CategoriesProductsUseCase>(() => CategoriesProductsUseCase(categoriesProductsRepository: getIt()));
+  getIt.registerLazySingleton<CategoryProductsCubit>(() => CategoryProductsCubit(getIt()));
+  getIt.registerLazySingleton<CategoryProductsBaseRepo>(() => CategoriesProductsRepositoryImp(categoriesApi: getIt()));
+  getIt.registerLazySingleton<CategoriesProductsApi>(() => CategoriesProductsApi());
+
+
+
+
 
 }

@@ -57,7 +57,7 @@ class _MainScreenState extends State<MainScreen> {
                       ),
                       BottomNavItem(
                         icon: 'search',
-                        title: S().search,
+                        title: S().products,
                         onTap: () {
                           cubit.changeIndex(1);
                         },

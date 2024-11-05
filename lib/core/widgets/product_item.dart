@@ -1,10 +1,11 @@
+import 'package:eshop/core/entities/product_entity.dart';
 import 'package:eshop/core/routing/routes.dart';
 import 'package:eshop/core/shared_preferences/my_shared.dart';
 import 'package:eshop/core/styles/colors.dart';
 import 'package:eshop/core/utils/navigators.dart';
 import 'package:eshop/core/utils/spacing.dart';
 import 'package:eshop/core/utils/svg.dart';
-import 'package:eshop/features/home/domain/entities/home_entities.dart';
+import 'package:eshop/core/widgets/app_image.dart';
 import 'package:eshop/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -12,18 +13,18 @@ import 'package:shimmer/shimmer.dart';
 
 class ProductItem extends StatefulWidget {
   final bool isLoading; // Add a loading state parameter
-   HomeProductsEntities product;
-   ProductItem(
-      {super.key,
-      required this.isLoading,
-      required this.product,
-      });
+  ProductEntities product;
+  ProductItem({
+    super.key,
+    required this.isLoading,
+    required this.product,
+  });
   @override
   State<ProductItem> createState() => _ProductItemState();
 }
 
 class _ProductItemState extends State<ProductItem> {
- // Default to false
+  // Default to false
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -116,11 +117,9 @@ class _ProductItemState extends State<ProductItem> {
       children: [
         verticalSpacing(5),
         GestureDetector(
-          onTap: (){
+          onTap: () {
             widget.product.isInFavorite = !widget.product.isInFavorite;
-            setState(() {
-
-            });
+            setState(() {});
           },
           child: Container(
             alignment: Alignment.topRight,
@@ -128,20 +127,21 @@ class _ProductItemState extends State<ProductItem> {
               radius: 15.r,
               backgroundColor: AppColors.darkGrey.withOpacity(0.5),
               child: Icon(
-                widget.product.isInFavorite ? Icons.favorite  :     Icons.favorite_border,
+                widget.product.isInFavorite
+                    ? Icons.favorite
+                    : Icons.favorite_border,
                 color: Colors.white,
                 size: 15.sp,
               ),
             ),
           ),
         ),
-        CircleAvatar(
-          radius: 34.r,
-          backgroundImage: NetworkImage(
-            widget.product.image,
-
-          ),
-        ),
+        AppImage(
+            imageUrl: widget.product.image,
+            width: 65.w,
+            height: 65.h,
+            fit: BoxFit.fill,
+            borderRadius: MyShared.getThemeMode() == ThemeMode.dark ? BorderRadius.circular(100.r) : BorderRadius.circular(0.r)),
         verticalSpacing(10),
         Center(
           child: Text(
@@ -151,13 +151,14 @@ class _ProductItemState extends State<ProductItem> {
                   ? AppColors.notPureWhite
                   : AppColors.notPureBlack,
               fontWeight: FontWeight.w600,
-
             ),
             textAlign: TextAlign.center,
             maxLines: 1,
           ),
         ),
-       widget.product.oldPrice != widget.product.price  ? verticalSpacing(10) : verticalSpacing(20),
+        widget.product.oldPrice != widget.product.price
+            ? verticalSpacing(10)
+            : verticalSpacing(20),
         Text(
           "${widget.product.price} EGP",
           style: TextStyle(
@@ -178,24 +179,24 @@ class _ProductItemState extends State<ProductItem> {
         verticalSpacing(10),
         Spacer(),
         InkWell(
-          onTap: (){
+          onTap: () {
             widget.product.isInCart = !widget.product.isInCart;
-            setState(() {
-
-            });
+            setState(() {});
           },
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
                 widget.product.isInCart ? S().removeFromCart : S().addToCart,
-              style: TextStyle(
-
+                style: TextStyle(
                   color: MyShared.getThemeMode() == ThemeMode.dark
-                      ?  widget.product.isInCart ? AppColors.error : AppColors.primary
-                      :  widget.product.isInCart ? AppColors.error : AppColors.primary,
+                      ? widget.product.isInCart
+                          ? AppColors.error
+                          : AppColors.primary
+                      : widget.product.isInCart
+                          ? AppColors.error
+                          : AppColors.primary,
                   fontWeight: FontWeight.w800,
-
                 ),
               ),
               horizontalSpacing(5),
@@ -203,7 +204,9 @@ class _ProductItemState extends State<ProductItem> {
                 assetName: MyShared.getThemeMode() == ThemeMode.dark
                     ? "add_to_cart_pd"
                     : "add_to_cart_home",
-                color:   widget.product.isInCart ? AppColors.error : AppColors.primary,
+                color: widget.product.isInCart
+                    ? AppColors.error
+                    : AppColors.primary,
               ),
             ],
           ),
