@@ -9,6 +9,11 @@ import 'package:eshop/features/home/data/repositories/home_repo.dart';
 import 'package:eshop/features/home/domain/repositories/base_home_repo.dart';
 import 'package:eshop/features/home/domain/use_cases/home_usecase.dart';
 import 'package:eshop/features/home/presentation/manager/home_cubit.dart';
+import 'package:eshop/features/product_details/data/data_source/product_details_api.dart';
+import 'package:eshop/features/product_details/data/repo/pd_repo_imp.dart';
+import 'package:eshop/features/product_details/domain/repo/pd_base_repo.dart';
+import 'package:eshop/features/product_details/domain/usecase/pd_usecase.dart';
+import 'package:eshop/features/product_details/presentation/manager/product_details_cubit.dart';
 import 'package:eshop/features/products/data/data_sources/categories_api.dart';
 import 'package:eshop/features/products/data/repositories/categories_repo.dart';
 import 'package:eshop/features/products/domain/repositories/category_products_base_repo.dart';
@@ -30,16 +35,11 @@ Future<void> setupGetIt() async {
   getIt.registerLazySingleton<RegisterRepo>(() => RegisterRepo( registerApi: getIt()));
   getIt.registerLazySingleton<RegisterCubit>(() => RegisterCubit(getIt()));
 
-
   // HOME
   getIt.registerLazySingleton<HomeUseCase>(() => HomeUseCase( baseHomeRepo: getIt()));
   getIt.registerLazySingleton<HomeCubit>(() => HomeCubit(getIt()));
   getIt.registerLazySingleton<BaseHomeRepo>(() => HomeRepoImpl(homeApi: getIt()));
   getIt.registerLazySingleton<HomeApi>(() => HomeApi());
-
-
-
-
 
   // CATEGORIES
   getIt.registerLazySingleton<CategoriesProductsUseCase>(() => CategoriesProductsUseCase(categoriesProductsRepository: getIt()));
@@ -47,8 +47,11 @@ Future<void> setupGetIt() async {
   getIt.registerLazySingleton<CategoryProductsBaseRepo>(() => CategoriesProductsRepositoryImp(categoriesApi: getIt()));
   getIt.registerLazySingleton<CategoriesProductsApi>(() => CategoriesProductsApi());
 
-
-
+  // PRODUCT DETAILS
+  getIt.registerLazySingleton<PDUseCase>(() => PDUseCase(getIt()));
+  getIt.registerLazySingleton<ProductDetailsCubit>(() => ProductDetailsCubit(getIt()));
+  getIt.registerLazySingleton<PDBaseRepo>(() => PDRepoImp(getIt()));
+  getIt.registerLazySingleton<ProdcutDetailsApi>(() => ProdcutDetailsApi());
 
 
 }

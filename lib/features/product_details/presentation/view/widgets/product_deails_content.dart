@@ -6,10 +6,15 @@ import 'package:eshop/features/product_details/presentation/view/widgets/add_to_
 import 'package:eshop/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:readmore/readmore.dart';
 
 class ProductDeailsContent extends StatelessWidget {
-  const ProductDeailsContent({super.key});
-
+  const ProductDeailsContent({super.key, required this.name, required this.description, required this.price, required this.oldPrice, required this.discount, required this.isInCart, required this.isInFav, required this.onTap});
+final String name,description;
+final double price,oldPrice,discount;
+final bool isInCart;
+  final bool isInFav;
+  final VoidCallback onTap;
   @override
   Widget build(BuildContext context) {
     return   Column(
@@ -18,7 +23,7 @@ class ProductDeailsContent extends StatelessWidget {
         Row(
           children: [
             Expanded(
-              child: Text("Onda Unisex Kids Speed Sand",
+              child: Text(name,
                 style: TextStyle(
                   fontSize: 16.sp,
                   fontWeight: FontWeight.w700,
@@ -33,14 +38,14 @@ class ProductDeailsContent extends StatelessWidget {
           children: [
             AppSVG(assetName: "coins"),
             horizontalSpacing(5),
-            Text("SAR 75.00",
+            Text(price.toString(),
               style: TextStyle(
                   color: AppColors.moreGold,
                   fontWeight: FontWeight.w600
               ),
             ),
             horizontalSpacing(5),
-            Text("SAR 7500.00",
+            Text(oldPrice.toString(),
               style: TextStyle(
                 color: AppColors.error,
                 fontSize: 12.sp,
@@ -60,7 +65,7 @@ class ProductDeailsContent extends StatelessWidget {
           ],
         ),
         verticalSpacing(10),
-        Text(S().description,
+        ReadMoreText(S().description,
           style: TextStyle(
             fontSize: 16.sp,
             fontWeight: FontWeight.w700,
@@ -68,7 +73,7 @@ class ProductDeailsContent extends StatelessWidget {
 
         ),
         verticalSpacing(5),
-        Text("Product details\nPackage Dimensions ‏ : ‎ 17.7 x 15.8 x 8.9 cm; 80 gDate First Available ‏ : ‎ 26 May 2024Manufacturer ‏ : ‎ ONDAASIN ‏ : ‎ B0D58QWBSKItem model number ‏ : ‎ FP-BA-SPE-FE-BEG-BEG-20Department ‏ : ‎ unisex-childBest Sellers Rank: #316 in Fashion (See Top 100 in Fashion)#1 in Girls' Fashion Sandals",
+        ReadMoreText("$description ",
           style: TextStyle(
               fontSize: 14.sp,
               fontWeight: FontWeight.w500,
@@ -77,7 +82,7 @@ class ProductDeailsContent extends StatelessWidget {
 
         ),
         verticalSpacing(15),
-        AddToCartItem(),
+        AddToCartItem(isInCart: isInCart, onTap: onTap,),
         verticalSpacing(15),
         DividerWidget()
       ],

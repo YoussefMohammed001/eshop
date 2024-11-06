@@ -6,6 +6,7 @@ import 'package:eshop/core/utils/navigators.dart';
 import 'package:eshop/core/utils/spacing.dart';
 import 'package:eshop/core/utils/svg.dart';
 import 'package:eshop/core/widgets/app_image.dart';
+import 'package:eshop/features/product_details/presentation/view/product_details_args.dart';
 import 'package:eshop/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -33,14 +34,19 @@ class _ProductItemState extends State<ProductItem> {
       margin: EdgeInsets.all(10.sp),
       padding: EdgeInsets.symmetric(horizontal: 12.sp),
       decoration: BoxDecoration(
+        color:MyShared.getThemeMode() == ThemeMode.dark ? AppColors.primaryDarkTheme : Colors.transparent,
         borderRadius: BorderRadius.circular(10.r),
-        border: Border.all(color: AppColors.grey),
+        border: Border.all(
+            color:MyShared.getThemeMode() == ThemeMode.dark ? AppColors.grey.withOpacity(0.3) : AppColors.grey
+        ),
       ),
       child: widget.isLoading == true
           ? _buildShimmer()
           : InkWell(
               onTap: () {
-                pushNamed(context, Routes.productDetailsScreen);
+                pushNamed(context, Routes.productDetailsScreen,
+
+                    arguments: ProductDetailsArgs(id: widget.product.id));
               },
               child:
                   _buildContent()), // Use shimmer or content based on loading state

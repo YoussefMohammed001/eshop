@@ -1,7 +1,6 @@
 import 'package:eshop/core/shared_preferences/my_shared.dart';
 import 'package:eshop/core/shared_preferences/my_shared_keys.dart';
 import 'package:eshop/core/styles/colors.dart';
-import 'package:eshop/core/utils/svg.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
@@ -35,6 +34,7 @@ class AppImage extends StatelessWidget {
         width: width,
         height: height,
         imageUrl: imageUrl,
+
         progressIndicatorBuilder: (context, url, downloadProgress) {
           return const CircularProgressIndicator(
 

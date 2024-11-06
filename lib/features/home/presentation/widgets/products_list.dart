@@ -16,7 +16,7 @@ class ProductsList extends StatelessWidget {
       itemBuilder: (BuildContext context, int index) {
         return ProductItem(
           isLoading: homeCubit.isLoading,
-          product:homeCubit.homeEntities.products.isNotEmpty ? homeCubit.homeEntities.products[index] : ProductEntities(name: "", id: 0, price: 0, oldPrice: 0, image: "image", isInCart: false, isFav: false, discount: 0),
+          product:homeCubit.homeEntities.products.isNotEmpty ? homeCubit.homeEntities.products[index] : ProductEntities(name: "", id: 0, price: 0, oldPrice: 0, image: "image", isInCart: false, isFav: false, discount: 0, images: [], description: ''),
         );
       }, gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,

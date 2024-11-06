@@ -8,6 +8,7 @@ import 'package:eshop/features/main_screen/view/screen/main_screen.dart';
 import 'package:eshop/features/more/presentation/pages/privacy_screen.dart';
 import 'package:eshop/features/on_bording/view/screens/dash_board_screen.dart';
 import 'package:eshop/features/product_details/presentation/view/pages/prodct_details_screen.dart';
+import 'package:eshop/features/product_details/presentation/view/product_details_args.dart';
 import 'package:eshop/features/profile/presentation/pages/delete_account_screen.dart';
 import 'package:eshop/features/profile/presentation/pages/profile_screen.dart';
 import 'package:eshop/features/settings/presentation/view/help_screen.dart';
@@ -44,7 +45,11 @@ class RouteServices {
         );
       case Routes.productDetailsScreen:
         return MaterialPageRoute(
-          builder: (_) => ProductDetailsScreen(),
+
+          builder: (_) {
+            final args = routeSettings.arguments as ProductDetailsArgs;
+            return ProductDetailsScreen(args: args,);
+          },
         );
       case Routes.settingsScreen:
         return MaterialPageRoute(

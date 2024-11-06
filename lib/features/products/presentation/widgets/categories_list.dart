@@ -1,6 +1,7 @@
 import 'package:eshop/core/styles/colors.dart';
 import 'package:eshop/core/utils/safe_print.dart';
 import 'package:eshop/core/utils/spacing.dart';
+import 'package:eshop/core/widgets/app_image.dart';
 import 'package:eshop/features/products/presentation/manager/category_products_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -114,12 +115,13 @@ class _CategoriesListState extends State<CategoriesList> {
                           ),
                           CircleAvatar(
                             radius: 26.r,
-                            backgroundImage: Image.network(widget
+
+                            backgroundColor: AppColors.primary,
+                            child: AppImage(imageUrl:widget
                                 .categoryProductsCubit
                                 .categoriesList[index]
-                                .image)
-                                .image,
-                            backgroundColor: AppColors.primary,
+                                .image , width: 60.w, height: 60.h,
+                                borderRadius: BorderRadius.circular(50.r)),
                           ),
                         ],
                       ),

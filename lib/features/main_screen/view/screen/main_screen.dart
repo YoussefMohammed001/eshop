@@ -56,7 +56,7 @@ class _MainScreenState extends State<MainScreen> {
                             : AppColors.bottomNavText,
                       ),
                       BottomNavItem(
-                        icon: 'search',
+                        icon: 'categories',
                         title: S().products,
                         onTap: () {
                           cubit.changeIndex(1);

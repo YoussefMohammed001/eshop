@@ -1,7 +1,9 @@
 class ProductEntities {
   String _name = "";
+  String _description = "";
   int _id = 0;
   double _price = 0;
+  List<String>  _images = [];
   double _oldPrice = 0;
   double _discount = 0;
   String _image = "";
@@ -10,7 +12,9 @@ class ProductEntities {
 
   ProductEntities({
     required String name,
+    required String description,
     required int id,
+    required List<String> images,
     required double price,
     required double oldPrice,
     required double discount,
@@ -19,6 +23,7 @@ class ProductEntities {
     required bool isFav,
   }) {
     _name = name;
+    _description = description;
     _id = id;
     _price = price;
     _oldPrice = oldPrice;
@@ -26,6 +31,7 @@ class ProductEntities {
     _image = image;
     _isInFavorite = isFav;
     _isInCart = isInCart;
+    _images = images;
   }
 
   // Factory constructor for an empty product
@@ -33,12 +39,14 @@ class ProductEntities {
     return ProductEntities(
       name: '',
       id: 0,
+      description: '',
       price: 0,
       oldPrice: 0,
       discount: 0,
       image: '',
       isInCart: false,
       isFav: false,
+      images: [],
     );
   }
 
@@ -50,6 +58,10 @@ class ProductEntities {
   String get image => _image;
   bool get isInFavorite => _isInFavorite;
   bool get isInCart => _isInCart;
+  String get description => _description;
+
+
+  List<String> get images => _images;
 
   set isInFavorite(bool value) {
     _isInFavorite = value;

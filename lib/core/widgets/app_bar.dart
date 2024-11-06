@@ -45,9 +45,12 @@ class _CustomAppBarState extends State<CustomAppBar> {
                 width: 20.w,
               )),
           horizontalSpacing(10),
-          Text(
-            widget.title,
-            style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600),
+          Expanded(
+            child: Text(
+              widget.title,
+              style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600),maxLines: 2,
+              
+            ),
           )
         ],
       ),

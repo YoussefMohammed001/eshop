@@ -18,6 +18,7 @@ class HomeMapper {
       image: banner.image,
       id: banner.id,
     );
+
   }
 
   static ProductEntities mapToProductEntity(HomeProducts product) {
@@ -27,7 +28,7 @@ class HomeMapper {
       name: product.name,
       price: product.price,
       isFav: product.inFavorites,
-      oldPrice: product.oldPrice, isInCart: product.inCart, discount: product.discount.toDouble(),
+      oldPrice: product.oldPrice, isInCart: product.inCart, discount: product.discount.toDouble(), images: product.images, description: '',
     );
   }
 }
