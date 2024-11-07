@@ -61,7 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
   builder: (context, state) {
     return Column(
       children: [
-        HomeAppBar(),
+ HomeAppBar(),
         Expanded(
           child: ListView(
             padding: EdgeInsets.zero,

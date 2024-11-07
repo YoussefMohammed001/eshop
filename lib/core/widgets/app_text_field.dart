@@ -115,7 +115,8 @@ class AppTextField extends StatelessWidget {
                   EdgeInsets.symmetric(vertical: 15.h, horizontal: 19.sp),
               hintText: hintText,
               fillColor: MyShared.getThemeMode() == ThemeMode.dark
-                  ? AppColors.notPureWhite.withOpacity(0.1)
+                  ? AppColors.primaryDarkTheme.withOpacity(0.5)
+              
                   : Colors.white,
               filled: true,
               errorMaxLines: 2,
@@ -127,8 +128,8 @@ class AppTextField extends StatelessWidget {
                 borderRadius: BorderRadius.circular(13.r),
                 borderSide: BorderSide(
                     color: MyShared.getThemeMode() == ThemeMode.dark
-                        ? AppColors.primaryDarkTheme
-                        : AppColors.primary),
+                        ? AppColors.primary
+                        : AppColors.primaryDarkTheme),
               ),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(13.r),
