@@ -1,5 +1,4 @@
 import 'package:eshop/core/di/di.dart';
-import 'package:eshop/core/styles/colors.dart';
 import 'package:eshop/core/utils/spacing.dart';
 import 'package:eshop/features/home/presentation/manager/home_cubit.dart';
 import 'package:eshop/features/home/presentation/widgets/home_app_bar.dart';

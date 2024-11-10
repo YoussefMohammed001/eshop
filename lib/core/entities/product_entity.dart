@@ -11,16 +11,16 @@ class ProductEntities {
   bool _isInCart = false;
 
   ProductEntities({
-    required String name,
-    required String description,
-    required int id,
-    required List<String> images,
-    required double price,
-    required double oldPrice,
-    required double discount,
-    required String image,
-    required bool isInCart,
-    required bool isFav,
+     String name = "",
+     String description = "",
+     int id = 0,
+     List<String> images = const [],
+     double price = 0,
+     double oldPrice = 0,
+     double discount  = 0,
+     String image = "",
+     bool isInCart = false,
+     bool isFav = false,
   }) {
     _name = name;
     _description = description;

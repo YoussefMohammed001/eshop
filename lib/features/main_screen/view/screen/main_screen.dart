@@ -1,5 +1,7 @@
+import 'package:eshop/core/di/di.dart';
 import 'package:eshop/core/shared_preferences/my_shared.dart';
 import 'package:eshop/core/styles/colors.dart';
+import 'package:eshop/features/fav/presentation/manager/favorite_cubit.dart';
 import 'package:eshop/features/main_screen/manager/main_cubit.dart';
 import 'package:eshop/features/main_screen/view/widgets/bottom_nav_item.dart';
 import 'package:eshop/generated/l10n.dart';
@@ -19,8 +21,15 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => cubit,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => cubit,
+        ),
+        BlocProvider(
+          create: (context) => FavoriteCubit(getIt()),
+        ),
+      ],
       child: BlocBuilder<MainCubit, MainState>(
         builder: (context, state) {
           return SafeArea(
@@ -31,15 +40,17 @@ class _MainScreenState extends State<MainScreen> {
                     Expanded(child: cubit.screens[cubit.index]),
                   ],
                 ),
-                floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+                floatingActionButtonLocation: FloatingActionButtonLocation
+                    .centerFloat,
                 floatingActionButton: Container(
                   width: 368.w,
                   height: 60.h,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10.r),
                       color:
-                     MyShared.getThemeMode() == ThemeMode.dark ? AppColors.backgroundDark :
-                     AppColors.bottomNavColor),
+                      MyShared.getThemeMode() == ThemeMode.dark ? AppColors
+                          .backgroundDark :
+                      AppColors.bottomNavColor),
                   padding: EdgeInsets.symmetric(horizontal: 15.sp),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,

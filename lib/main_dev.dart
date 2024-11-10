@@ -2,10 +2,12 @@ import 'package:eshop/app.dart';
 import 'package:eshop/core/di/di.dart';
 import 'package:eshop/core/network/api_service.dart';
 import 'package:eshop/core/shared_preferences/my_shared.dart';
+import 'package:eshop/core/utils/safe_print.dart';
 import 'package:eshop/myy_bloc_observer.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'core/shared_preferences/my_shared_keys.dart';
 import 'fcm.dart';
 import 'firebase_options.dart';
 
@@ -21,7 +23,7 @@ Future<void> main() async {
   // Initialize SharedPreferences and Dio
   await MyShared.init();
 
-
+safePrint(MyShared.getString(key: MySharedKeys.apiToken));
   // Initialize ApiService
   ApiService.init();
 

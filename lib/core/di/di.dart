@@ -4,6 +4,11 @@ import 'package:eshop/features/auth/login/presentation/manager/login_cubit.dart'
 import 'package:eshop/features/auth/register/data/data_source/register_api.dart';
 import 'package:eshop/features/auth/register/data/repo/register_repo.dart';
 import 'package:eshop/features/auth/register/presentation/manager/register_cubit.dart';
+import 'package:eshop/features/fav/data/data_sources/favourite_data_source.dart';
+import 'package:eshop/features/fav/data/repositories/fav_repo_imp.dart';
+import 'package:eshop/features/fav/domain/repositories/fav_base_repo.dart';
+import 'package:eshop/features/fav/domain/use_cases/fav_use_case.dart';
+import 'package:eshop/features/fav/presentation/manager/favorite_cubit.dart';
 import 'package:eshop/features/home/data/data_sources/home_api.dart';
 import 'package:eshop/features/home/data/repositories/home_repo.dart';
 import 'package:eshop/features/home/domain/repositories/base_home_repo.dart';
@@ -53,5 +58,11 @@ Future<void> setupGetIt() async {
   getIt.registerLazySingleton<PDBaseRepo>(() => PDRepoImp(getIt()));
   getIt.registerLazySingleton<ProdcutDetailsApi>(() => ProdcutDetailsApi());
 
+
+  // Favorite
+  getIt.registerLazySingleton<FavUseCase>(() => FavUseCase(getIt()));
+  getIt.registerLazySingleton<FavoriteCubit>(() => FavoriteCubit(getIt()));
+  getIt.registerLazySingleton<FavBaseRepo>(() => FavRepoImp(getIt()));
+  getIt.registerLazySingleton<FavouriteDataSource>(() => FavouriteDataSource());
 
 }

@@ -1,28 +1,26 @@
 import 'package:eshop/core/network/endpoints.dart';
 import 'package:eshop/core/shared_preferences/my_shared.dart';
+import 'package:eshop/core/shared_preferences/my_shared_keys.dart';
 import 'package:eshop/core/utils/safe_print.dart';
 import 'package:dio/dio.dart';
-import 'package:eshop/core/utils/secure_data/secure_keys.dart';
-import 'package:eshop/core/utils/secure_data/secure_storage.dart';
 
 
 class DioInterceptor extends Interceptor {
   Dio dio = Dio(BaseOptions(baseUrl: ApiConstants.baseUrl));
-  String? token;
 
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
-    String token = SecureStorageService.readData(SecureKeys.token).toString();
     options.headers.addAll({
       "lang": MyShared.getCurrentLanguage(),
       "Content-Type": "application/json",
-      "Authorization": "Bearer $token",
+      "Authorization": MyShared.getString(key: MySharedKeys.apiToken),
     });
     options.headers.addAll({
-      "Authorization": "Bearer $token",
+      "Authorization": MyShared.getString(key: MySharedKeys.apiToken),
     });
         return super.onRequest(options, handler);
   }
+
 
 
   @override

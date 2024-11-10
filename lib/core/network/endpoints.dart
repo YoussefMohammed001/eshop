@@ -5,6 +5,8 @@ class ApiConstants {
   static const String home = 'home';
   static const String categories = 'categories';
   static const String products = 'products/';
+  static const String favorite = 'favorites';
+  static const String favoriteToggle = 'favorites';
 
 
 }
