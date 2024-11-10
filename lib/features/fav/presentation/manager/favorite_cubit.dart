@@ -10,6 +10,7 @@ class FavoriteCubit extends Cubit<FavoriteState> {
   FavoriteCubit(this.favUseCase) : super(FavoriteInitial());
   final FavUseCase favUseCase;
   bool isLoading = false;
+   List<FavoriteItem> favorites = [];
   Future<bool> toggleFav(int productId)async{
     emit(ToggleFavoriteLoading());
 final response = await favUseCase.fire(productId);
@@ -30,7 +31,8 @@ final response = await favUseCase.fire(productId);
       await favUseCase.getFav().then((onValue){
         if(onValue.status == true){
           isLoading  =false;
-          emit(GetFavSuccess( favoritesResponse: onValue,));
+          favorites = onValue.data.favorites;
+          emit(GetFavSuccess());
         }else{
           emit(GetFavFailure(errorMessage: onValue.message.toString(),));
         }

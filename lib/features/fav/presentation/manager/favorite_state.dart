@@ -22,8 +22,7 @@ final class ToggleFavoriteFailure extends FavoriteState {
 class GetFavLoading extends FavoriteState {}
 
 class GetFavSuccess extends FavoriteState {
-  final FavoritesResponse favoritesResponse;
-  GetFavSuccess({required this.favoritesResponse});
+  GetFavSuccess();
 }
 
 class GetFavFailure extends FavoriteState {
