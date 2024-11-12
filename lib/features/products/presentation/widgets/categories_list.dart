@@ -37,7 +37,7 @@ class _CategoriesListState extends State<CategoriesList> {
       builder: (context, state) {
         return SizedBox(
           height: 95.h,
-          child: isLoading  || widget.categoryProductsCubit.isFirstTime
+          child: isLoading
               ? ListView.builder(
             padding: EdgeInsets.symmetric(horizontal: 10.sp),
             itemCount: 6, // Placeholder count for shimmer effect

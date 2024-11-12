@@ -6,36 +6,162 @@ import 'package:eshop/core/widgets/app_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shimmer/shimmer.dart';
 
 class CartProductItem extends StatelessWidget {
-  const CartProductItem({super.key,this.updateVisible = true});
-final bool updateVisible;
+  const CartProductItem({super.key, this.updateVisible = true, this.isLoading = false});
+  final bool updateVisible;
+  final bool isLoading;
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-        width: 338.w,
-        height: 100.h,
-        margin: EdgeInsets.symmetric(vertical: 10.sp, horizontal: 10.sp),
-        decoration: BoxDecoration(
-            color: MyShared.getThemeMode() == ThemeMode.dark ? Colors.transparent : Colors.white,
-            borderRadius: BorderRadius.circular(10.r),
-            border: Border.all(color: AppColors.grey.withOpacity(0.5))),
-        child: Row(
+    return isLoading ? _buildShimmerPlaceholder() : _buildCartItem(context);
+  }
 
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-          AppImage(
-              imageUrl:
-                  "https://plus.unsplash.com/premium_photo-1661368209998-6965fb87c600?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGlwaG9uZSUyMHdpdGglMjBiYWNrZ3JvdW5kJTIwd2hpdGV8ZW58MHx8MHx8fDA%3D",
+
+  // Shimmer placeholder
+  Widget _buildShimmerPlaceholder() {
+    return Container(
+      width: 338.w,
+      height: 100.h,
+      margin: EdgeInsets.symmetric(vertical: 10.sp, horizontal: 10.sp),
+      padding: EdgeInsets.symmetric(vertical: 10.sp, horizontal: 10.sp),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10.r),
+        border: Border.all(color: Colors.grey.withOpacity(0.1)),
+      ),
+      child: Row(
+        children: [
+          Shimmer.fromColors(
+            baseColor: Colors.grey.shade200,
+            highlightColor: Colors.grey.shade50,
+            child: Container(
               width: 91.w,
               height: 100.h,
-              borderRadius: BorderRadius.only(
-                topRight: Radius.circular(MyShared.getCurrentLanguage() == "ar" ? 10.r : 0.r),
-                bottomRight: Radius.circular(MyShared.getCurrentLanguage() == "ar" ? 10.r : 0.r),
-                topLeft: Radius.circular(MyShared.getCurrentLanguage() == "en" ? 10.r : 0.r),
-                bottomLeft: Radius.circular(MyShared.getCurrentLanguage() == "en" ? 10.r : 0.r),
-              )),
+              decoration: BoxDecoration(
+                color: Colors.grey[300],
+                borderRadius: BorderRadius.circular(10.r),
+              ),
+            ),
+          ),
+          horizontalSpacing(10),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Shimmer.fromColors(
+                  baseColor: Colors.grey.shade200,
+                  highlightColor: Colors.grey.shade50,
+                  child: Container(
+                    height: 20.h,
+                    width: 120.w,
+                    color: Colors.grey[300],
+                  ),
+                ),
+                verticalSpacing(2),
+                Row(
+                  children: [
+                    Shimmer.fromColors(
+                      baseColor: Colors.grey.shade200,
+                      highlightColor: Colors.grey.shade50,
+                      child: Container(
+                        height: 15.h,
+                        width: 50.w,
+                        color: Colors.grey[300],
+                      ),
+                    ),
+                    horizontalSpacing(5),
+                    Shimmer.fromColors(
+                      baseColor: Colors.grey.shade200,
+                      highlightColor: Colors.grey.shade50,
+                      child: Container(
+                        height: 15.h,
+                        width: 50.w,
+                        color: Colors.grey[300],
+                      ),
+                    ),
+                  ],
+                ),
+                verticalSpacing(2),
+                Shimmer.fromColors(
+                  baseColor: Colors.grey.shade200,
+                  highlightColor: Colors.grey.shade50,
+                  child: Container(
+                    height: 15.h,
+                    width: 100.w,
+                    color: Colors.grey[300],
+                  ),
+                ),
+                verticalSpacing(2),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Shimmer.fromColors(
+                      baseColor: Colors.grey.shade200,
+                      highlightColor: Colors.grey.shade50,
+                      child: Container(
+                        alignment: Alignment.centerRight,
+                        height: 15.h,
+                        width: 20.w,
+                        color: Colors.grey[300],
+                      ),
+                    ),
+                    horizontalSpacing(5),
+                    Shimmer.fromColors(
 
+
+                      baseColor: Colors.grey.shade200,
+                      highlightColor: Colors.grey.shade50,
+                      child: Container(
+                        alignment: Alignment.centerRight,
+                        height: 15.h,
+                        width: 10.w,
+                        color: Colors.grey[300],
+                      ),
+                    ),
+                    horizontalSpacing(5),
+                    Shimmer.fromColors(
+                      baseColor: Colors.grey.shade200,
+                      highlightColor: Colors.grey.shade50,
+                      child: Container(
+                        alignment: Alignment.centerRight,
+                        height: 15.h,
+                        width: 20.w,
+                        color: Colors.grey[300],
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  // Main cart item UI
+  Widget _buildCartItem(BuildContext context) {
+    return Container(
+      width: 338.w,
+      height: 100.h,
+      margin: EdgeInsets.symmetric(vertical: 10.sp, horizontal: 10.sp),
+      decoration: BoxDecoration(
+        color: MyShared.getThemeMode() == ThemeMode.dark ? Colors.transparent : Colors.white,
+        borderRadius: BorderRadius.circular(10.r),
+        border: Border.all(color: AppColors.grey.withOpacity(0.5)),
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          AppImage(
+            imageUrl: "https://plus.unsplash.com/premium_photo-1661368209998-6965fb87c600?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGlwaG9uZSUyMHdpdGglMjBiYWNrZ3JvdW5kJTIwd2hpdGV8ZW58MHx8MHx8fDA%3D",
+            width: 91.w,
+            height: 100.h,
+            borderRadius: BorderRadius.circular(10.r),
+          ),
           horizontalSpacing(10),
           Expanded(
             child: Container(
@@ -47,13 +173,22 @@ final bool updateVisible;
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text("Iphone 16",
-                          style: TextStyle(
-                              color:MyShared.getThemeMode() == ThemeMode.dark ? AppColors.notPureWhite : AppColors.notPureBlack,
-                              fontWeight: FontWeight.w700)),
+                      Text(
+                        "Iphone 16",
+                        style: TextStyle(
+                          color: MyShared.getThemeMode() == ThemeMode.dark
+                              ? AppColors.notPureWhite
+                              : AppColors.notPureBlack,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
                       Visibility(
-                          visible: updateVisible,
-                          child: Icon(Icons.delete_outline_rounded, color: AppColors.error))
+                        visible: updateVisible,
+                        child: Icon(
+                          Icons.delete_outline_rounded,
+                          color: AppColors.error,
+                        ),
+                      ),
                     ],
                   ),
                   verticalSpacing(2),
@@ -86,40 +221,46 @@ final bool updateVisible;
                   ),
                   verticalSpacing(2),
                   RatingBarIndicator(
-              
                     direction: Axis.horizontal,
                     itemCount: 5,
                     rating: 3.5,
                     itemPadding: EdgeInsets.all(0.sp),
-                    itemSize: 15.sp, itemBuilder: (BuildContext context, int index) {
+                    itemSize: 15.sp,
+                    itemBuilder: (BuildContext context, int index) {
                       return Padding(
-                        padding:  EdgeInsets.all(5.sp),
+                        padding: EdgeInsets.all(5.sp),
                         child: AppSVG(assetName: "star"),
                       );
-                  },
-              
+                    },
                   ),
-              
                   Visibility(
                     visible: updateVisible,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        AppSVG(assetName: "plus",
-              
-                        color: MyShared.getThemeMode() == ThemeMode.dark ? AppColors.notPureWhite : AppColors.moreGold,
+                        AppSVG(
+                          assetName: "plus",
+                          color: MyShared.getThemeMode() == ThemeMode.dark
+                              ? AppColors.notPureWhite
+                              : AppColors.primary,
                         ),
                         horizontalSpacing(10),
-                        Text("1",
+                        Text(
+                          "1",
                           style: TextStyle(
-                              fontSize: 16.sp,
-                              fontWeight: FontWeight.w600,
-                            color: MyShared.getThemeMode() == ThemeMode.dark ? AppColors.notPureWhite : AppColors.moreGold,
+                            fontSize: 16.sp,
+                            fontWeight: FontWeight.w600,
+                            color: MyShared.getThemeMode() == ThemeMode.dark
+                                ? AppColors.notPureWhite
+                                : AppColors.primary,
                           ),
                         ),
                         horizontalSpacing(10),
-                        AppSVG(assetName: "minus",
-                          color: MyShared.getThemeMode() == ThemeMode.dark ? AppColors.notPureWhite : AppColors.moreGold,
+                        AppSVG(
+                          assetName: "minus",
+                          color: MyShared.getThemeMode() == ThemeMode.dark
+                              ? AppColors.notPureWhite
+                              : AppColors.primary,
                         ),
                         horizontalSpacing(5),
                       ],
@@ -129,11 +270,8 @@ final bool updateVisible;
               ),
             ),
           ),
-
-
-
-
-
-        ]));
+        ],
+      ),
+    );
   }
 }
