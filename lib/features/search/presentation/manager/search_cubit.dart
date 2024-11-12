@@ -4,6 +4,7 @@ import 'package:eshop/features/search/data/repositories/search_repo_imp.dart';
 import 'package:meta/meta.dart';
 part 'search_state.dart';
 
+
 class SearchCubit extends Cubit<SearchState> {
   SearchCubit(this.searchRepoImp) : super(SearchInitial());
   List<ProductsModel> searchModel = [];
@@ -12,9 +13,11 @@ class SearchCubit extends Cubit<SearchState> {
 
   search({required String search}){
     isLoading = true;
+
     emit(SearchLoading());
     searchRepoImp.getSearchRepo(query: search).then((onValue){
       searchModel = onValue;
+
       isLoading =false;
       emit(SearchSuccess());
     }).catchError((onError){

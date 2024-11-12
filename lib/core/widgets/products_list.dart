@@ -3,7 +3,6 @@ import 'package:eshop/core/widgets/product_item.dart';
 import 'package:eshop/features/fav/domain/entities/fav_entities.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 class ProductsList extends StatelessWidget {
   ProductsList({
     super.key,
@@ -14,8 +13,8 @@ class ProductsList extends StatelessWidget {
 
   });
 
-  List<ProductEntities> product = [];
-  List<FavEntities> favList = [];
+   List<ProductEntities> product = [];
+   List<FavEntities> favList = [];
   final bool isLoading;
   final bool isFavScreen;
   final int productsLength;
