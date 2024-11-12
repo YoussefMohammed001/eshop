@@ -70,7 +70,13 @@ class HomeAppBar extends StatelessWidget {
             ],
           ),
         ),
-        AppTextField(title: "", hintText:S().search)
+        InkWell(
+            onTap: (){
+              pushNamed(context, Routes.searchScreen);
+            },
+            child: AppTextField(
+                enabled: false,
+                title: "", hintText:S().search))
       ],
     );
   }

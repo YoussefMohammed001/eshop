@@ -11,6 +11,7 @@ import 'package:eshop/features/product_details/presentation/view/pages/prodct_de
 import 'package:eshop/features/product_details/presentation/view/product_details_args.dart';
 import 'package:eshop/features/profile/presentation/pages/delete_account_screen.dart';
 import 'package:eshop/features/profile/presentation/pages/profile_screen.dart';
+import 'package:eshop/features/search/presentation/pages/search_screen.dart';
 import 'package:eshop/features/settings/presentation/view/help_screen.dart';
 import 'package:eshop/features/settings/presentation/view/report_screen.dart';
 import 'package:eshop/features/settings/presentation/view/settings_screen.dart';
@@ -54,6 +55,9 @@ class RouteServices {
       case Routes.settingsScreen:
         return MaterialPageRoute(
           builder: (_) => SettingsScreen(),
+        );     case Routes.searchScreen:
+        return MaterialPageRoute(
+          builder: (_) => SearchScreen(),
         );
       case Routes.cartScreen:
         return MaterialPageRoute(

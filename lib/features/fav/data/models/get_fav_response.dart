@@ -1,3 +1,5 @@
+import 'package:eshop/core/models/products_model.dart';
+
 class FavoritesResponse {
   final bool status;
   final String? message;
@@ -69,7 +71,7 @@ class FavoritesData {
 
 class FavoriteItem {
   final int id;
-  final Product product;
+  final ProductsModel product;
 
   FavoriteItem({
     required this.id,
@@ -79,39 +81,8 @@ class FavoriteItem {
   factory FavoriteItem.fromJson(Map<String, dynamic> json) {
     return FavoriteItem(
       id: json['id'],
-      product: Product.fromJson(json['product']),
+      product: ProductsModel.fromJson(json['product']),
     );
   }
 }
 
-class Product {
-  final int id;
-  final int price;
-  final int oldPrice;
-  final int discount;
-  final String image;
-  final String name;
-  final String description;
-
-  Product({
-    required this.id,
-    required this.price,
-    required this.oldPrice,
-    required this.discount,
-    required this.image,
-    required this.name,
-    required this.description,
-  });
-
-  factory Product.fromJson(Map<String, dynamic> json) {
-    return Product(
-      id: json['id'],
-      price: json['price'],
-      oldPrice: json['old_price'],
-      discount: json['discount'],
-      image: json['image'],
-      name: json['name'],
-      description: json['description'],
-    );
-  }
-}

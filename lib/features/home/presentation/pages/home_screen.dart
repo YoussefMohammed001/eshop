@@ -72,7 +72,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   padding: EdgeInsets.symmetric(horizontal: 20.sp),
                   child: Text(S().topRated,style: TextStyle(fontSize: 16.sp,fontWeight: FontWeight.w700),)),
               verticalSpacing(10),
-              ProductsList(homeCubit: cubit,),
+              ProductsHomeList(homeCubit: cubit,),
               verticalSpacing(80),
             ],
           ),

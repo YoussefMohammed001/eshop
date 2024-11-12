@@ -1,7 +1,7 @@
-import 'package:eshop/features/fav/data/models/get_fav_response.dart';
 import 'package:eshop/features/fav/data/models/toggle_fav_model.dart';
+import 'package:eshop/features/fav/domain/entities/fav_entities.dart';
 
 abstract class FavBaseRepo {
   Future<ToggleFavoriteResponse> toggleFav(int productId);
-  Future<FavoritesResponse> getFav();
+  Future<List<FavEntities>> getFav();
 }

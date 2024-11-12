@@ -1,5 +1,5 @@
-import 'package:eshop/features/fav/data/models/get_fav_response.dart';
 import 'package:eshop/features/fav/data/models/toggle_fav_model.dart';
+import 'package:eshop/features/fav/domain/entities/fav_entities.dart';
 import 'package:eshop/features/fav/domain/repositories/fav_base_repo.dart';
 
 class FavUseCase{
@@ -10,7 +10,7 @@ class FavUseCase{
     return await repo.toggleFav(productId);
   }
 
-    Future<FavoritesResponse> getFav()async{
+    Future<List<FavEntities>> getFav()async{
     return await repo.getFav();
   }
 

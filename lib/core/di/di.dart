@@ -24,6 +24,9 @@ import 'package:eshop/features/products/data/repositories/categories_repo.dart';
 import 'package:eshop/features/products/domain/repositories/category_products_base_repo.dart';
 import 'package:eshop/features/products/domain/use_cases/products_categories_usecase.dart';
 import 'package:eshop/features/products/presentation/manager/category_products_cubit.dart';
+import 'package:eshop/features/search/data/data_sources/search_api.dart';
+import 'package:eshop/features/search/data/repositories/search_repo_imp.dart';
+import 'package:eshop/features/search/presentation/manager/search_cubit.dart';
 import 'package:get_it/get_it.dart';
 
 final getIt = GetIt.instance;
@@ -65,4 +68,9 @@ Future<void> setupGetIt() async {
   getIt.registerLazySingleton<FavBaseRepo>(() => FavRepoImp(getIt()));
   getIt.registerLazySingleton<FavouriteDataSource>(() => FavouriteDataSource());
 
+
+  // Search
+  getIt.registerLazySingleton<SearchCubit>(() => SearchCubit(getIt()));
+  getIt.registerLazySingleton<SearchRepoImp>(() => SearchRepoImp(searchApi: getIt()));
+  getIt.registerLazySingleton<SearchApi>(() => SearchApi());
 }

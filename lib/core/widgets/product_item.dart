@@ -2,27 +2,30 @@ import 'package:eshop/core/entities/product_entity.dart';
 import 'package:eshop/core/routing/routes.dart';
 import 'package:eshop/core/shared_preferences/my_shared.dart';
 import 'package:eshop/core/styles/colors.dart';
-import 'package:eshop/core/utils/easy_loading.dart';
 import 'package:eshop/core/utils/navigators.dart';
-import 'package:eshop/core/utils/safe_print.dart';
 import 'package:eshop/core/utils/spacing.dart';
 import 'package:eshop/core/utils/svg.dart';
 import 'package:eshop/core/widgets/app_image.dart';
-import 'package:eshop/features/fav/presentation/manager/favorite_cubit.dart';
+import 'package:eshop/features/fav/domain/entities/fav_entities.dart';
 import 'package:eshop/features/product_details/presentation/view/product_details_args.dart';
 import 'package:eshop/generated/l10n.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer/shimmer.dart';
 
 class ProductItem extends StatefulWidget {
   final bool isLoading; // Add a loading state parameter
   ProductEntities product;
+  FavEntities? favEntities;
+  bool isFavScreen;
+  final VoidCallback? onFavTap;
   ProductItem({
     super.key,
+    this.favEntities,
+    this.isFavScreen = false,
     required this.isLoading,
     required this.product,
+    this.onFavTap,
   });
   @override
   State<ProductItem> createState() => _ProductItemState();
@@ -31,29 +34,20 @@ class ProductItem extends StatefulWidget {
 class _ProductItemState extends State<ProductItem> {
   @override
   Widget build(BuildContext context) {
-    return BlocListener<FavoriteCubit, FavoriteState>(
-  listener: (context, state) {
-    if(state is ToggleFavoriteLoading){
-      showLoading();
-    }
-    if (state is ToggleFavoriteSuccess) {
-      showSuccess(state.message);
-    }
-    if (state is ToggleFavoriteFailure) {
-      showError(state.message);
-    }
-  },
-  child: Container(
+    return Container(
       width: 159.w,
       height: 213.h,
       margin: EdgeInsets.all(10.sp),
       padding: EdgeInsets.symmetric(horizontal: 12.sp),
       decoration: BoxDecoration(
-        color:MyShared.getThemeMode() == ThemeMode.dark ? AppColors.primaryDarkTheme : Colors.transparent,
+        color: MyShared.getThemeMode() == ThemeMode.dark
+            ? AppColors.primaryDarkTheme
+            : Colors.transparent,
         borderRadius: BorderRadius.circular(10.r),
         border: Border.all(
-            color:MyShared.getThemeMode() == ThemeMode.dark ? AppColors.grey.withOpacity(0.3 ) : AppColors.grey
-        ),
+            color: MyShared.getThemeMode() == ThemeMode.dark
+                ? AppColors.grey.withOpacity(0.3)
+                : AppColors.grey),
       ),
       child: widget.isLoading == true
           ? _buildShimmer()
@@ -64,8 +58,7 @@ class _ProductItemState extends State<ProductItem> {
               },
               child:
                   _buildContent()), // Use shimmer or content based on loading state
-    ),
-);
+    );
   }
 
   Widget _buildShimmer() {
@@ -137,32 +130,15 @@ class _ProductItemState extends State<ProductItem> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         verticalSpacing(5),
-        BlocBuilder<FavoriteCubit, FavoriteState>(
-  builder: (context, state) {
-    return  GestureDetector(
-          onTap: () {
-            context.read<FavoriteCubit>().toggleFav(widget.product.id,).then((onValue){
-              safePrint("onValue => $onValue");
-              if(onValue == false){
-                widget.product.isInFavorite = !widget.product.isInFavorite;
-                setState(() {
-                });
-              }
-              if(onValue == true){
-                safePrint("Success");
-                widget.product.isInFavorite = !widget.product.isInFavorite;
-                setState(() {});
-              }
-            });
-
-          },
+        GestureDetector(
+          onTap: widget.onFavTap,
           child: Container(
             alignment: Alignment.topRight,
             child: CircleAvatar(
-
               radius: 15.r,
               backgroundColor: AppColors.darkGrey.withOpacity(0.5),
               child: Icon(
+                widget.isFavScreen ? Icons.favorite :
                 widget.product.isInFavorite
                     ? Icons.favorite
                     : Icons.favorite_border,
@@ -171,15 +147,15 @@ class _ProductItemState extends State<ProductItem> {
               ),
             ),
           ),
-        );
-  },
-),
+        ),
         AppImage(
             imageUrl: widget.product.image,
             width: 65.w,
             height: 65.h,
             fit: BoxFit.fill,
-            borderRadius: MyShared.getThemeMode() == ThemeMode.dark ? BorderRadius.circular(100.r) : BorderRadius.circular(0.r)),
+            borderRadius: MyShared.getThemeMode() == ThemeMode.dark
+                ? BorderRadius.circular(100.r)
+                : BorderRadius.circular(0.r)),
         verticalSpacing(10),
         Center(
           child: Text(
@@ -253,6 +229,4 @@ class _ProductItemState extends State<ProductItem> {
       ],
     );
   }
-
-
 }
