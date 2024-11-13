@@ -45,9 +45,7 @@ class CheckOutScreen extends StatelessWidget {
                       itemCount: 12,
                       shrinkWrap: true,
                       itemBuilder: (BuildContext context, int index) {
-                        return CartProductItem(
-                          updateVisible: false,
-                        );
+                        return Text("s");
                       },
                     ),
                   ],

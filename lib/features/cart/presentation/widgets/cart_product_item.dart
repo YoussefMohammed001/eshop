@@ -1,3 +1,4 @@
+import 'package:eshop/core/entities/product_entity.dart';
 import 'package:eshop/core/shared_preferences/my_shared.dart';
 import 'package:eshop/core/styles/colors.dart';
 import 'package:eshop/core/utils/spacing.dart';
@@ -9,9 +10,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer/shimmer.dart';
 
 class CartProductItem extends StatelessWidget {
-  const CartProductItem({super.key, this.updateVisible = true, this.isLoading = false});
+  const CartProductItem({super.key, this.updateVisible = true, this.isLoading = false, required this.productEntities});
   final bool updateVisible;
   final bool isLoading;
+  final ProductEntities productEntities;
 
   @override
   Widget build(BuildContext context) {
@@ -157,7 +159,7 @@ class CartProductItem extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           AppImage(
-            imageUrl: "https://plus.unsplash.com/premium_photo-1661368209998-6965fb87c600?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGlwaG9uZSUyMHdpdGglMjBiYWNrZ3JvdW5kJTIwd2hpdGV8ZW58MHx8MHx8fDA%3D",
+            imageUrl: productEntities.image,
             width: 91.w,
             height: 100.h,
             borderRadius: BorderRadius.circular(10.r),
@@ -173,13 +175,16 @@ class CartProductItem extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        "Iphone 16",
-                        style: TextStyle(
-                          color: MyShared.getThemeMode() == ThemeMode.dark
-                              ? AppColors.notPureWhite
-                              : AppColors.notPureBlack,
-                          fontWeight: FontWeight.w700,
+                      Expanded(
+                        child: Text(
+                          productEntities.name,
+                          maxLines: 2,
+                          style: TextStyle(
+                            color: MyShared.getThemeMode() == ThemeMode.dark
+                                ? AppColors.notPureWhite
+                                : AppColors.notPureBlack,
+                            fontWeight: FontWeight.w700,
+                          ),
                         ),
                       ),
                       Visibility(
@@ -194,13 +199,13 @@ class CartProductItem extends StatelessWidget {
                   verticalSpacing(2),
                   Row(
                     children: [
-                      Text("SAR 3000",
+                      Text(productEntities.price.toString(),
                           style: TextStyle(
                               color: AppColors.moreGold,
                               fontWeight: FontWeight.w600)),
                       horizontalSpacing(5),
                       Text(
-                        "SAR 7500.00",
+                        productEntities.oldPrice.toString(),
                         style: TextStyle(
                           color: AppColors.error,
                           fontSize: 12.sp,
@@ -210,7 +215,7 @@ class CartProductItem extends StatelessWidget {
                       ),
                       horizontalSpacing(5),
                       Text(
-                        "50 %",
+                        productEntities.discount.toString(),
                         style: TextStyle(
                           color: AppColors.error,
                           fontSize: 12.sp,

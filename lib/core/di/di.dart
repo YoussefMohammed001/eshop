@@ -4,6 +4,11 @@ import 'package:eshop/features/auth/login/presentation/manager/login_cubit.dart'
 import 'package:eshop/features/auth/register/data/data_source/register_api.dart';
 import 'package:eshop/features/auth/register/data/repo/register_repo.dart';
 import 'package:eshop/features/auth/register/presentation/manager/register_cubit.dart';
+import 'package:eshop/features/cart/data/data_sources/cart_api.dart';
+import 'package:eshop/features/cart/data/repositories/cart_repo_imp.dart';
+import 'package:eshop/features/cart/domain/repositories/cart_base_repo.dart';
+import 'package:eshop/features/cart/domain/use_cases/cart_use_case.dart';
+import 'package:eshop/features/cart/presentation/manager/cart_cubit.dart';
 import 'package:eshop/features/fav/data/data_sources/favourite_data_source.dart';
 import 'package:eshop/features/fav/data/repositories/fav_repo_imp.dart';
 import 'package:eshop/features/fav/domain/repositories/fav_base_repo.dart';
@@ -76,4 +81,11 @@ Future<void> setupGetIt() async {
   getIt.registerLazySingleton<SearchCubit>(() => SearchCubit(getIt()));
   getIt.registerLazySingleton<SearchBaseRepo>(() => SearchRepoImp(searchApi: getIt()));
   getIt.registerLazySingleton<SearchApi>(() => SearchApi());
+
+  //Cart
+  getIt.registerLazySingleton<CartUseCase>(() => CartUseCase(cartBaseRepo: getIt()));
+  getIt.registerLazySingleton<CartCubit>(() => CartCubit(getIt()));
+  getIt.registerLazySingleton<CartBaseRepo>(() => CartRepoImp(cartApi: getIt()));
+  getIt.registerLazySingleton<CartApi>(() => CartApi());
 }
+
