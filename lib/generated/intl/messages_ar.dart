@@ -46,6 +46,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "client": MessageLookupByLibrary.simpleMessage("العميل"),
         "commercialLicense":
             MessageLookupByLibrary.simpleMessage("ترخيص تجاري"),
+        "complaint": MessageLookupByLibrary.simpleMessage("الشكوى"),
         "confirmPassword":
             MessageLookupByLibrary.simpleMessage("تأكيد كلمة المرور"),
         "confirmPasswordNotMatch":
@@ -83,6 +84,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("أدخل كلمة المرور"),
         "enterYourPhoneNumber":
             MessageLookupByLibrary.simpleMessage("أدخل رقم هاتفك"),
+        "faq": MessageLookupByLibrary.simpleMessage("الأسئلة الشائعة"),
         "fav": MessageLookupByLibrary.simpleMessage("المفضلة"),
         "forgetPassText": MessageLookupByLibrary.simpleMessage(
             "يرجى إدخال رقم هاتفك لإرسال \nرمز التحقق إليك"),

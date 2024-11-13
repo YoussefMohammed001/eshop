@@ -46,6 +46,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "client": MessageLookupByLibrary.simpleMessage("Client"),
         "commercialLicense":
             MessageLookupByLibrary.simpleMessage("Commercial License"),
+        "complaint": MessageLookupByLibrary.simpleMessage("Complaint"),
         "confirmPassword":
             MessageLookupByLibrary.simpleMessage("Confirm Password"),
         "confirmPasswordNotMatch": MessageLookupByLibrary.simpleMessage(
@@ -84,6 +85,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Enter your Password"),
         "enterYourPhoneNumber":
             MessageLookupByLibrary.simpleMessage("Enter your Phone Number"),
+        "faq": MessageLookupByLibrary.simpleMessage("FAQs"),
         "fav": MessageLookupByLibrary.simpleMessage("Favorites"),
         "forgetPassText": MessageLookupByLibrary.simpleMessage(
             "Please enter your mobile to send to \nyou a varication code"),

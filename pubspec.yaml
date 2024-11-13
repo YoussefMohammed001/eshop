@@ -86,6 +86,7 @@ dependencies:
   flutter_rating_bar: ^4.0.1
   flutter_keyword_highlighter: ^1.1.1
   readmore: ^3.0.0
+  shimmer_pro: ^0.0.6
 
 dependency_overrides:
     intl: ^0.17.0

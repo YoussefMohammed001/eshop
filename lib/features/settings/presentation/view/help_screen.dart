@@ -38,17 +38,17 @@ class HelpScreen extends StatelessWidget {
                 verticalSpacing(10),
                 HighlightedText(
                     defaultTextStyle: TextStyle(
-                        fontSize: 20.sp,
+                        fontSize: 16.sp,
                         color: MyShared.getThemeMode() == ThemeMode.dark
                             ? AppColors.notPureWhite
                             : AppColors.primary
                     ),
-                    content: "${S().contactUs} +96582365988",
+                    content: "${S().contactUs} +01008451421",
                     highlightedTextStyles: [
                       HighlightedTextStyle(
                           highlightedText: S().contactUs,
                           customStyle: TextStyle(
-                            fontWeight: FontWeight.w700,
+                            fontWeight: FontWeight.w700,           fontSize: 16.sp,
                               color: MyShared.getThemeMode() == ThemeMode.dark
                                   ? AppColors.notPureWhite
                                   : AppColors.primary
@@ -57,29 +57,30 @@ class HelpScreen extends StatelessWidget {
                 verticalSpacing(20),
                 HighlightedText(
                     defaultTextStyle: TextStyle(
-                        fontSize: 20.sp,
+                        fontSize: 16.sp,
                         color: MyShared.getThemeMode() == ThemeMode.dark
                             ? AppColors.notPureWhite
                             : AppColors.primary
                     ),
-                    content: "${S().location} Haa Alkhalidia,Jeddah",
+                    content: "${S().location} Cairo,Egypt",
                     highlightedTextStyles: [
                       HighlightedTextStyle(
                           highlightedText: S().location,
-                          customStyle: TextStyle(fontWeight: FontWeight.w700))
+                          customStyle: TextStyle(fontWeight: FontWeight.w700,           fontSize: 16.sp,))
                     ]),
                 verticalSpacing(20),
                 HighlightedText(
                     defaultTextStyle: TextStyle(
-                        fontSize: 20.sp,
+                        fontSize: 16.sp,
                         color: MyShared.getThemeMode() == ThemeMode.dark
                             ? AppColors.notPureWhite
                             : AppColors.primary),
-                    content: "${S().email}  albalad@gmail.com",
+                    content: "${S().email}  yoseffmohamed001@gmail.com",
                     highlightedTextStyles: [
                       HighlightedTextStyle(
+
                           highlightedText: S().email,
-                          customStyle: TextStyle(
+                          customStyle: TextStyle(fontSize: 16.sp,
                             fontWeight: FontWeight.w700,
                           ))
                     ]),

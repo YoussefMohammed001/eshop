@@ -12,6 +12,7 @@ import 'package:eshop/features/product_details/presentation/view/product_details
 import 'package:eshop/features/profile/presentation/pages/delete_account_screen.dart';
 import 'package:eshop/features/profile/presentation/pages/profile_screen.dart';
 import 'package:eshop/features/search/presentation/pages/search_screen.dart';
+import 'package:eshop/features/settings/presentation/view/faq_screen.dart';
 import 'package:eshop/features/settings/presentation/view/help_screen.dart';
 import 'package:eshop/features/settings/presentation/view/report_screen.dart';
 import 'package:eshop/features/settings/presentation/view/settings_screen.dart';
@@ -86,6 +87,9 @@ class RouteServices {
    case Routes.privacyScreen:
         return MaterialPageRoute(
           builder: (_) => PrivacyScreen(),
+        );   case Routes.faqScreen:
+        return MaterialPageRoute(
+          builder: (_) => FaqScreen(),
         );
 
       default:

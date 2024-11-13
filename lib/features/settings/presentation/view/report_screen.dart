@@ -29,7 +29,7 @@ class ReportScreen extends StatelessWidget {
                   withTitle: true,
                   ),
                   verticalSpacing(10),
-                  AppTextField(title: S().fullName, hintText: S().fullName,
+                  AppTextField(title: S().complaint, hintText: S().complaint,
                   withTitle: true,
                     minLines: 10,
                     maxLines: 20,

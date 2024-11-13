@@ -32,7 +32,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
             }, themeMode: MyShared.getThemeMode(),),
             MoreItem(image: "help", text: S().help, onTap: (){
               pushNamed(context, Routes.helpScreen);
-
+            }, themeMode: MyShared.getThemeMode(),),
+            MoreItem(image: "help", text: S().faq, onTap: (){
+              pushNamed(context, Routes.faqScreen);
             }, themeMode: MyShared.getThemeMode(),),
             LanguageWidget(),
           ThemeWidget(),

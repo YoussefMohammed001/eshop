@@ -10,7 +10,7 @@ class PrivacyScreen extends StatelessWidget {
     return SafeArea(child: Scaffold(
       body: Column(
         children: [
-          CustomAppBar(title: S().privacyPolicy)
+          CustomAppBar(title: S().faq)
         ],
       ),
     ));

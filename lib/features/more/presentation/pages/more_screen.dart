@@ -58,14 +58,7 @@ class _MoreScreenState extends State<MoreScreen> {
                   onTap: () {},
                   themeMode: currentTheme, // Pass themeMode to MoreItem
                 ),
-                MoreItem(
-                  image: "policy",
-                  text: S().policyPrivacy,
-                  onTap: () {
-                    pushNamed(context, Routes.privacyScreen);
-                  },
-                  themeMode: currentTheme, // Pass themeMode to MoreItem
-                ),
+
                 MoreItem(
                   image: "settings",
                   text: S().setting,

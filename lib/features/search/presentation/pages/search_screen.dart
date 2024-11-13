@@ -25,10 +25,30 @@ class _SearchScreenState extends State<SearchScreen> {
         create: (context) => cubit..search(search: "apple"),
         child: BlocBuilder<SearchCubit, SearchState>(
           builder: (context, state) {
-            return ProductsList(
-                isLoading: cubit.isLoading,
-                productsLength: cubit.searchProducts.length,
-              product: cubit.searchProducts,
+            return SafeArea(
+
+              child: Scaffold(
+                body: Column(
+                  children: [
+                    TextField(
+                      onChanged: (v){
+                        cubit.search(search: v);
+                      },
+                      decoration: InputDecoration(
+                        enabledBorder: OutlineInputBorder()
+                      ),
+                    ),
+                    Expanded(
+
+                      child: ProductsList(
+                        isLoading: cubit.isLoading,
+                        productsLength: cubit.searchProducts.length,
+                        product: cubit.searchProducts,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             );
           },
         ),

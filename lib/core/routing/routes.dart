@@ -22,6 +22,7 @@ class Routes {
   static const String profileScreen = '/profileScreen';
   static const String deleteScreen = '/deleteScreen';
   static const String searchScreen = '/searchScreen';
+  static const String faqScreen = '/faqScreen';
 
 
 

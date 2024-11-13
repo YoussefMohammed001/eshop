@@ -1109,6 +1109,26 @@ class S {
       args: [],
     );
   }
+
+  /// `FAQs`
+  String get faq {
+    return Intl.message(
+      'FAQs',
+      name: 'faq',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Complaint`
+  String get complaint {
+    return Intl.message(
+      'Complaint',
+      name: 'complaint',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

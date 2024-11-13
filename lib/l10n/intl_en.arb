@@ -104,5 +104,7 @@
   "deleteAccountText3": "3- Termination of Subscriptions: If you have any active subscriptions, they will be automatically canceled upon account deletion. Please ensure to manage any necessary changes or cancellations before proceeding.",
   "topRated": "Top Rated",
   "removeFromCart": "Remove from Cart",
-  "noProductsInFav": "no products in favourites"
+  "noProductsInFav": "no products in favourites",
+  "faq": "FAQs",
+  "complaint": "Complaint"
 }
