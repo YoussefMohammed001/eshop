@@ -1,11 +1,8 @@
-import 'package:eshop/core/entities/product_entity.dart';
 import 'package:eshop/core/utils/spacing.dart';
-import 'package:eshop/core/widgets/product_item.dart';
 import 'package:eshop/core/widgets/products_list.dart';
 import 'package:eshop/features/products/presentation/manager/category_products_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CategoryProductsList extends StatefulWidget {
   const CategoryProductsList({super.key, required this.categoryProductsCubit});

@@ -1099,6 +1099,16 @@ class S {
       args: [],
     );
   }
+
+  /// `no products in favourites`
+  String get noProductsInFav {
+    return Intl.message(
+      'no products in favourites',
+      name: 'noProductsInFav',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

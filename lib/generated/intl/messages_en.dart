@@ -112,6 +112,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "more": MessageLookupByLibrary.simpleMessage("More"),
         "myOrders": MessageLookupByLibrary.simpleMessage("My Orders"),
         "next": MessageLookupByLibrary.simpleMessage("Next"),
+        "noProductsInFav":
+            MessageLookupByLibrary.simpleMessage("no products in favourites"),
         "onBoard1": MessageLookupByLibrary.simpleMessage(
             "Explore thousands of products from trusted brands, all in one place! Find everything you need with ease and convenience."),
         "onBoard2": MessageLookupByLibrary.simpleMessage(

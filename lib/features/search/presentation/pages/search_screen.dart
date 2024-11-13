@@ -27,7 +27,8 @@ class _SearchScreenState extends State<SearchScreen> {
           builder: (context, state) {
             return ProductsList(
                 isLoading: cubit.isLoading,
-                productsLength: cubit.searchModel.length
+                productsLength: cubit.searchProducts.length,
+              product: cubit.searchProducts,
             );
           },
         ),

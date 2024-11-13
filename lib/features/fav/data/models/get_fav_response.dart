@@ -24,28 +24,28 @@ class FavoritesData {
   final int currentPage;
   final List<FavoriteItem> favorites;
   final String firstPageUrl;
-  final int from;
+  final int? from; // Nullable to handle null values
   final int lastPage;
   final String lastPageUrl;
   final String? nextPageUrl;
   final String path;
   final int perPage;
   final String? prevPageUrl;
-  final int to;
+  final int? to; // Nullable to handle null values
   final int total;
 
   FavoritesData({
     required this.currentPage,
     required this.favorites,
     required this.firstPageUrl,
-    required this.from,
+    this.from,
     required this.lastPage,
     required this.lastPageUrl,
     this.nextPageUrl,
     required this.path,
     required this.perPage,
     this.prevPageUrl,
-    required this.to,
+    this.to,
     required this.total,
   });
 
@@ -56,14 +56,14 @@ class FavoritesData {
           .map((item) => FavoriteItem.fromJson(item))
           .toList(),
       firstPageUrl: json['first_page_url'],
-      from: json['from'],
+      from: json['from'], // Nullable int
       lastPage: json['last_page'],
       lastPageUrl: json['last_page_url'],
       nextPageUrl: json['next_page_url'],
       path: json['path'],
       perPage: json['per_page'],
       prevPageUrl: json['prev_page_url'],
-      to: json['to'],
+      to: json['to'], // Nullable int
       total: json['total'],
     );
   }
@@ -85,4 +85,3 @@ class FavoriteItem {
     );
   }
 }
-

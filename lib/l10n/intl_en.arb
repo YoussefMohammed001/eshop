@@ -103,6 +103,6 @@
   "deleteAccountText2": "2- Loss of Access: You will no longer have access to your account, and all associated services and benefits will be terminated. This includes access to any premium features, saved content, and ongoing subscriptions.",
   "deleteAccountText3": "3- Termination of Subscriptions: If you have any active subscriptions, they will be automatically canceled upon account deletion. Please ensure to manage any necessary changes or cancellations before proceeding.",
   "topRated": "Top Rated",
-
-  "removeFromCart": "Remove from Cart"
+  "removeFromCart": "Remove from Cart",
+  "noProductsInFav": "no products in favourites"
 }
