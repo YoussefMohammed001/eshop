@@ -94,7 +94,6 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                       setState(() {});
                                     });
                                   },
-
                                 ),
                               ],
                             ),
@@ -104,9 +103,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                           isInCart: state.productEntities.isInCart,
                           onTap: () {
                             state.productEntities.isInCart =
-                            !state.productEntities.isInCart;
+                                !state.productEntities.isInCart;
                             setState(() {});
-
                           },
                         ),
                         verticalSpacing(15),
