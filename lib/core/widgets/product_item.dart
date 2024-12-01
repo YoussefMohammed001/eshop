@@ -51,7 +51,7 @@ class _ProductItemState extends State<ProductItem> {
       ),
       child: widget.isLoading == true
           ? _buildShimmer()
-          : InkWell(
+          : GestureDetector(
               onTap: () {
                 pushNamed(context, Routes.productDetailsScreen,
                     arguments: ProductDetailsArgs(id: widget.product.id));

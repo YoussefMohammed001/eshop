@@ -36,14 +36,10 @@ Map<String, dynamic> _$HomeDataToJson(HomeData instance) => <String, dynamic>{
 HomeBanner _$HomeBannerFromJson(Map<String, dynamic> json) => HomeBanner(
       id: (json['id'] as num).toInt(),
       image: json['image'] as String,
-      category: json['category'] as String?,
-      product: json['product'] as String?,
     );
 
 Map<String, dynamic> _$HomeBannerToJson(HomeBanner instance) =>
     <String, dynamic>{
       'id': instance.id,
       'image': instance.image,
-      'category': instance.category,
-      'product': instance.product,
     };

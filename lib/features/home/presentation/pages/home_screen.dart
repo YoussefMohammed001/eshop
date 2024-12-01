@@ -1,5 +1,10 @@
 import 'package:eshop/core/di/di.dart';
+import 'package:eshop/core/routing/routes.dart';
+import 'package:eshop/core/styles/colors.dart';
+import 'package:eshop/core/utils/navigators.dart';
 import 'package:eshop/core/utils/spacing.dart';
+import 'package:eshop/core/utils/svg.dart';
+import 'package:eshop/core/widgets/app_text_field.dart';
 import 'package:eshop/features/home/presentation/manager/home_cubit.dart';
 import 'package:eshop/features/home/presentation/widgets/home_app_bar.dart';
 import 'package:eshop/features/home/presentation/widgets/home_banner.dart';
@@ -29,7 +34,9 @@ class _HomeScreenState extends State<HomeScreen> {
         });
       }
     });
-  }  List<String> images = [
+  }
+
+  List<String> images = [
     'https://images.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     'https://images.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     'https://images.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
@@ -51,36 +58,97 @@ class _HomeScreenState extends State<HomeScreen> {
   ];
 
   final cubit = HomeCubit(getIt());
-  
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-  create: (context) => cubit..getHomeData(),
-  child: BlocBuilder<HomeCubit, HomeState>(
-  builder: (context, state) {
-    return Column(
-      children: [
- HomeAppBar(),
-        Expanded(
-          child: ListView(
-            padding: EdgeInsets.zero,
-            children: [
-              verticalSpacing(10),
-              HomeBanner(cubit: cubit,),
-              verticalSpacing(30),
-              Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20.sp),
-                  child: Text(S().topRated,style: TextStyle(fontSize: 16.sp,fontWeight: FontWeight.w700),)),
-              verticalSpacing(10),
-              ProductsHomeList(homeCubit: cubit,),
-              verticalSpacing(80),
+      create: (context) => cubit..getHomeData(),
+      child: BlocBuilder<HomeCubit, HomeState>(
+        builder: (context, state) {
+          return CustomScrollView(
+            physics: state is HomeLoading ? NeverScrollableScrollPhysics() : null,
+            slivers: [
+              SliverToBoxAdapter(
+                child: HomeAppBar(),
+              ),
+
+              SliverPersistentHeader(
+                pinned: true,
+                delegate: _SliverAppBarDelegate(
+                  minHeight: 70.h,
+                  maxHeight: 70.h,
+                  child: InkWell(
+                      onTap: () {
+                        pushNamed(context, Routes.searchScreen);
+                      },
+                      child: Container(
+                        height: 10.h,
+                        color: AppColors.primary,
+                        child: AppTextField(
+                            prefixIcon: Padding(
+                              padding: EdgeInsets.all(15.sp),
+                              child: AppSVG(
+                                assetName: "search",
+                                color: AppColors.primary,
+                              ),
+                            ),
+                            enabled: false,
+                            title: "",
+                            hintText: S().search),
+                      )),
+                ),
+              ),
+              SliverToBoxAdapter(
+                child: verticalSpacing(10),
+
+              ),
+              SliverToBoxAdapter(
+                child: HomeBanner(
+                  cubit: cubit,
+                ),
+              ),
+              SliverToBoxAdapter(
+                child: ProductsHomeList(
+                  homeCubit: cubit,
+                ),
+              ),
+              SliverToBoxAdapter(
+                child: verticalSpacing(80),
+
+              ),
             ],
-          ),
-        ),
-      ],
+          );
+        },
+      ),
     );
-  },
-),
-);
+  }
+}
+
+class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
+  final double minHeight;
+  final double maxHeight;
+  final Widget child;
+
+  _SliverAppBarDelegate({
+    required this.minHeight,
+    required this.maxHeight,
+    required this.child,
+  });
+
+  @override
+  double get minExtent => minHeight;
+
+  @override
+  double get maxExtent => maxHeight;
+
+  @override
+  Widget build(
+      BuildContext context, double shrinkOffset, bool overlapsContent) {
+    return SizedBox.expand(child: child);
+  }
+
+  @override
+  bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) {
+    return true;
   }
 }

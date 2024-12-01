@@ -3,6 +3,7 @@ import 'package:eshop/core/shared_preferences/my_shared_keys.dart';
 import 'package:eshop/core/styles/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppImage extends StatelessWidget {
   const AppImage({
@@ -36,8 +37,11 @@ class AppImage extends StatelessWidget {
         imageUrl: imageUrl,
 
         progressIndicatorBuilder: (context, url, downloadProgress) {
-          return const CircularProgressIndicator(
-
+          return Center(
+            child: Image.asset("assets/images/gif/loading-gif.gif",
+            height: 30.h,
+              width: 30.w,
+            )
           );
         },
         errorWidget: (context, url, error) => Icon(Icons.error_outline,

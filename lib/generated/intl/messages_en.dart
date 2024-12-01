@@ -37,6 +37,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "cancelOrder": MessageLookupByLibrary.simpleMessage("Cancel Order"),
         "cart": MessageLookupByLibrary.simpleMessage("Cart"),
+        "cartTitle": MessageLookupByLibrary.simpleMessage(
+            "Part of your order qualifies for FREE Shipping.\\nChoose the FREE Shipping option at checkout."),
         "cashOnDelivery":
             MessageLookupByLibrary.simpleMessage("Cash On Delivery"),
         "categories": MessageLookupByLibrary.simpleMessage("Categories"),
@@ -114,6 +116,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "more": MessageLookupByLibrary.simpleMessage("More"),
         "myOrders": MessageLookupByLibrary.simpleMessage("My Orders"),
         "next": MessageLookupByLibrary.simpleMessage("Next"),
+        "noProductsInCart":
+            MessageLookupByLibrary.simpleMessage("no products in cart"),
         "noProductsInFav":
             MessageLookupByLibrary.simpleMessage("no products in favourites"),
         "onBoard1": MessageLookupByLibrary.simpleMessage(
@@ -155,6 +159,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "serviceProvider":
             MessageLookupByLibrary.simpleMessage("Service Provider"),
         "setting": MessageLookupByLibrary.simpleMessage("Setting"),
+        "showLess": MessageLookupByLibrary.simpleMessage("Show Less"),
+        "showMore": MessageLookupByLibrary.simpleMessage("Show More"),
         "skip": MessageLookupByLibrary.simpleMessage("Skip"),
         "submit": MessageLookupByLibrary.simpleMessage("Submit"),
         "termsAndConditions":

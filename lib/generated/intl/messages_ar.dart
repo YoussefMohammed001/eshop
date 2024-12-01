@@ -37,6 +37,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "cancel": MessageLookupByLibrary.simpleMessage("الغاء"),
         "cancelOrder": MessageLookupByLibrary.simpleMessage("إلغاء الطلب"),
         "cart": MessageLookupByLibrary.simpleMessage("عربة التسوق"),
+        "cartTitle": MessageLookupByLibrary.simpleMessage(
+            "جزء من طلبك مؤهل للحصول على الشحن المجاني.\\nاختر خيار الشحن المجاني عند إتمام الطلب."),
         "cashOnDelivery":
             MessageLookupByLibrary.simpleMessage("الدفع عند الاستلام"),
         "categories": MessageLookupByLibrary.simpleMessage("التصنيفات"),
@@ -113,6 +115,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "more": MessageLookupByLibrary.simpleMessage("المزيد"),
         "myOrders": MessageLookupByLibrary.simpleMessage("طلباتي"),
         "next": MessageLookupByLibrary.simpleMessage("التالي"),
+        "noProductsInCart":
+            MessageLookupByLibrary.simpleMessage("لا توجد منتجات في السلة"),
         "noProductsInFav":
             MessageLookupByLibrary.simpleMessage("لا توجد منتجات في المفضلة"),
         "onBoard1": MessageLookupByLibrary.simpleMessage(
@@ -152,6 +156,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "sendOtp": MessageLookupByLibrary.simpleMessage("إرسال رمز التحقق"),
         "serviceProvider": MessageLookupByLibrary.simpleMessage("مقدم الخدمة"),
         "setting": MessageLookupByLibrary.simpleMessage("الإعدادات"),
+        "showLess": MessageLookupByLibrary.simpleMessage("اظهار اقل"),
+        "showMore": MessageLookupByLibrary.simpleMessage("اظهار المزيد"),
         "skip": MessageLookupByLibrary.simpleMessage("تخطي"),
         "submit": MessageLookupByLibrary.simpleMessage("تاكيد"),
         "termsAndConditions":

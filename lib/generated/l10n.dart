@@ -1129,6 +1129,46 @@ class S {
       args: [],
     );
   }
+
+  /// `Show More`
+  String get showMore {
+    return Intl.message(
+      'Show More',
+      name: 'showMore',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Show Less`
+  String get showLess {
+    return Intl.message(
+      'Show Less',
+      name: 'showLess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `no products in cart`
+  String get noProductsInCart {
+    return Intl.message(
+      'no products in cart',
+      name: 'noProductsInCart',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Part of your order qualifies for FREE Shipping.\nChoose the FREE Shipping option at checkout.`
+  String get cartTitle {
+    return Intl.message(
+      'Part of your order qualifies for FREE Shipping.\\nChoose the FREE Shipping option at checkout.',
+      name: 'cartTitle',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

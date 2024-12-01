@@ -10,9 +10,10 @@ class HomeApi {
       final response = await ApiService.getData(
         endPoint: ApiConstants.home,
       );
-      safePrint(response);
-      final homeModel = HomeResponse.fromJson(response);
-      return homeModel;
+      safePrint("api response $response");
+      HomeResponse homeResponse = HomeResponse.fromJson(response);
+      safePrint("home model $homeResponse");
+      return homeResponse;
     } catch (e) {
       safePrint("api error===========> $e");
       rethrow;

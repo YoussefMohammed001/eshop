@@ -63,7 +63,7 @@ class AppTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin:
-          margin ?? EdgeInsets.symmetric(horizontal: 15.sp, vertical: 10.sp),
+          margin ?? EdgeInsets.symmetric(horizontal: 15.sp, vertical: 5.sp),
       width: 338.w,
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -85,59 +85,63 @@ class AppTextField extends StatelessWidget {
                   ],
                 )
               : SizedBox(),
-          TextFormField(
-            enabled: enabled,
-            cursorColor: MyShared.getThemeMode() == ThemeMode.dark
-                ? AppColors.notPureWhite
-                : AppColors.notPureBlack,
-            textAlign: textAlign ?? TextAlign.start,
-            minLines: minLines,
-            maxLines: maxLines,
-            validator: validator,
-            onChanged: onChanged,
-            controller: controller,
-            keyboardType: keyboardType ?? TextInputType.text,
-            textInputAction: textInputAction,
-            onFieldSubmitted: onFieldSubmitted,
-            maxLength: maxLength,
-            inputFormatters: inputFormatters,
-            autofocus: autofocus,
-            decoration: InputDecoration(
-              prefixIcon: prefixIcon,
-              labelStyle: TextStyle(),
-              hintStyle: TextStyle(
-                color: MyShared.getThemeMode() == ThemeMode.dark
-                    ? AppColors.notPureWhite
-                    : AppColors.notPureBlack,
-              ),
-              errorStyle: const TextStyle(),
-              contentPadding:
-                  EdgeInsets.symmetric(vertical: 15.h, horizontal: 19.sp),
-              hintText: hintText,
-              fillColor: MyShared.getThemeMode() == ThemeMode.dark
-                  ? AppColors.primaryDarkTheme.withOpacity(0.5)
-              
-                  : Colors.white,
-              filled: true,
-              errorMaxLines: 2,
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(13.r),
-                borderSide: const BorderSide(color: AppColors.grey),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(13.r),
-                borderSide: BorderSide(
-                    color: MyShared.getThemeMode() == ThemeMode.dark
-                        ? AppColors.primary
-                        : AppColors.primaryDarkTheme),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(13.r),
-                borderSide: const BorderSide(color: AppColors.grey),
-              ),
-              disabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(13.r),
-                borderSide: const BorderSide(color: AppColors.grey),
+          verticalSpacing(5),
+          SizedBox(
+            height: 50.h,
+            child: TextFormField(
+              enabled: enabled,
+              cursorColor: MyShared.getThemeMode() == ThemeMode.dark
+                  ? AppColors.notPureWhite
+                  : AppColors.notPureBlack,
+              textAlign: textAlign ?? TextAlign.start,
+              minLines: minLines,
+              maxLines: maxLines,
+              validator: validator,
+              onChanged: onChanged,
+              controller: controller,
+              keyboardType: keyboardType ?? TextInputType.text,
+              textInputAction: textInputAction,
+              onFieldSubmitted: onFieldSubmitted,
+              maxLength: maxLength,
+              inputFormatters: inputFormatters,
+              autofocus: autofocus,
+              decoration: InputDecoration(
+                prefixIcon: prefixIcon,
+                labelStyle: TextStyle(),
+                hintStyle: TextStyle(
+                  color: MyShared.getThemeMode() == ThemeMode.dark
+                      ? AppColors.notPureWhite
+                      : AppColors.notPureBlack,
+                ),
+                errorStyle: const TextStyle(),
+                contentPadding: padding ??
+                    EdgeInsets.symmetric(vertical: 5.sp, horizontal: 10.sp),
+                hintText: hintText,
+                fillColor: MyShared.getThemeMode() == ThemeMode.dark
+                    ? AppColors.primaryDarkTheme.withOpacity(0.5)
+
+                    : Colors.white,
+                filled: true,
+                errorMaxLines: 2,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(13.r),
+                  borderSide: const BorderSide(color: AppColors.grey),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(13.r),
+                  borderSide: BorderSide(
+                      color: MyShared.getThemeMode() == ThemeMode.dark
+                          ? AppColors.primary
+                          : AppColors.primaryDarkTheme),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(13.r),
+                  borderSide: const BorderSide(color: AppColors.grey),
+                ),
+                disabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(13.r),
+                  borderSide: const BorderSide(color: AppColors.grey),
+                ),
               ),
             ),
           ),

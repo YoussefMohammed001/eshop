@@ -1,8 +1,6 @@
 import 'package:eshop/core/styles/colors.dart';
 import 'package:eshop/core/utils/spacing.dart';
 import 'package:eshop/core/utils/svg.dart';
-import 'package:eshop/core/widgets/divider.dart';
-import 'package:eshop/features/product_details/presentation/view/widgets/add_to_cart_item.dart';
 import 'package:eshop/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -18,7 +16,6 @@ class ProductDeailsContent extends StatelessWidget {
     required this.discount,
     required this.isInCart,
     required this.isInFav,
-    required this.onCartTap,
     required this.onFavTap,
   });
   final String name, description;
@@ -26,7 +23,6 @@ class ProductDeailsContent extends StatelessWidget {
   final bool isInCart;
   final bool isInFav;
   final VoidCallback onFavTap;
-  final VoidCallback onCartTap;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -47,8 +43,9 @@ class ProductDeailsContent extends StatelessWidget {
               radius: 15.r,
               child: IconButton(
                   onPressed: onFavTap,
-                  icon: Icon(isInFav ? Icons.favorite : Icons.favorite_border,
-                  size: 15.sp,
+                  icon: Icon(
+                    isInFav ? Icons.favorite : Icons.favorite_border,
+                    size: 15.sp,
                   )),
             )
           ],
@@ -96,15 +93,25 @@ class ProductDeailsContent extends StatelessWidget {
         ReadMoreText(
           "$description ",
           style: TextStyle(
-              fontSize: 14.sp, fontWeight: FontWeight.w500, height: 1.5.sp),
+            fontSize: 14.sp,
+            fontWeight: FontWeight.w500,
+            height: 1.5.sp,
+          ),
+          trimLines: 7,
+          trimMode: TrimMode.Line,
+          trimCollapsedText: S().showMore,
+          trimExpandedText: S().showLess,
+          lessStyle: TextStyle(
+   color: AppColors.gold,
+            fontSize: 14.sp,
+            fontWeight: FontWeight.w700,
+          ),
+          moreStyle: TextStyle(
+            fontSize: 14.sp,color: AppColors.gold,
+            fontWeight: FontWeight.w700,
+          ),
         ),
         verticalSpacing(15),
-        AddToCartItem(
-          isInCart: isInCart,
-          onTap: onCartTap,
-        ),
-        verticalSpacing(15),
-        DividerWidget()
       ],
     );
   }

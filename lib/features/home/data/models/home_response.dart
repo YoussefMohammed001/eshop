@@ -1,6 +1,5 @@
 import 'package:eshop/core/models/products_model.dart';
 import 'package:json_annotation/json_annotation.dart';
-
 part 'home_response.g.dart'; // This file will be generated
 
 @JsonSerializable()
@@ -33,10 +32,8 @@ class HomeData {
 class HomeBanner {
   final int id;
   final String image;
-  final String? category;
-  final String? product;
 
-  HomeBanner({required this.id, required this.image, this.category, this.product});
+  HomeBanner({required this.id, required this.image,});
 
   factory HomeBanner.fromJson(Map<String, dynamic> json) => _$HomeBannerFromJson(json);
 

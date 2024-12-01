@@ -106,5 +106,9 @@
   "removeFromCart": "Remove from Cart",
   "noProductsInFav": "no products in favourites",
   "faq": "FAQs",
-  "complaint": "Complaint"
+  "complaint": "Complaint",
+  "showMore": "Show More",
+  "showLess": "Show Less",
+  "noProductsInCart": "no products in cart",
+  "cartTitle": "Part of your order qualifies for FREE Shipping.\\nChoose the FREE Shipping option at checkout."
 }

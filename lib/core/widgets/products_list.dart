@@ -38,6 +38,7 @@ class ProductsList extends StatelessWidget {
       child: BlocBuilder<FavoriteCubit, FavoriteState>(
         builder: (context, state) {
           return GridView.builder(
+            padding: EdgeInsets.zero,
             physics: NeverScrollableScrollPhysics(),
             shrinkWrap: true,
             itemCount: isLoading ? 10 : productsLength,

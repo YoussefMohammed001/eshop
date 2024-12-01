@@ -22,6 +22,8 @@ class _CategoryProductsListState extends State<CategoryProductsList> {
 
         return Expanded(
           child: ListView(
+
+            padding: EdgeInsets.all(0),
             children: [
               ProductsList(
                   product: widget.categoryProductsCubit.productList,

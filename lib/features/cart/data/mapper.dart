@@ -1,6 +1,6 @@
 import 'package:eshop/core/entities/product_entity.dart';
 import 'package:eshop/core/models/products_model.dart';
-import 'package:eshop/features/cart/data/models/get_cart_model_response.dart';
+import 'package:eshop/features/cart/data/models/get_cart/get_cart_model_response.dart';
 import 'package:eshop/features/cart/domain/entities/cart_entities.dart';
 
 class CartMapper {
@@ -8,11 +8,11 @@ class CartMapper {
     return CartEntities(
 
       subTotal: cartData.subTotal.toDouble(),
-      cartItemsEntities: mapToCartItemsEntities(cartData.cartItems),
+      cartItemsEntities: mapToCartItemsEntitiesList(cartData.cartItems),
     );
   }
 
-  static List<CartItemsEntities> mapToCartItemsEntities(List<CartItem> cartItems) {
+  static List<CartItemsEntities> mapToCartItemsEntitiesList(List<CartItem> cartItems) {
     return cartItems.map((item) => CartItemsEntities(
    productCartId: item.id,
       productEntities: mapToProductEntity(item.product),

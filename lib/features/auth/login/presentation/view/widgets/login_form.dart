@@ -50,7 +50,8 @@ class _LoginFormState extends State<LoginForm> {
               withTitle: true,
               title: S().email,
               hintText: S().email,
-              keyboardType: TextInputType.phone,
+              textInputAction: TextInputAction.next,
+              keyboardType: TextInputType.emailAddress,
               controller: widget.cubit.emailController,
               validator: (v) {
                 if (v!.isEmpty) {
