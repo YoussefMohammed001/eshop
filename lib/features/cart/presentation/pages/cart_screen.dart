@@ -1,11 +1,15 @@
 import 'package:eshop/core/di/di.dart';
+import 'package:eshop/core/routing/routes.dart';
 import 'package:eshop/core/shared_preferences/my_shared.dart';
 import 'package:eshop/core/styles/colors.dart';
+import 'package:eshop/core/utils/navigators.dart';
 import 'package:eshop/core/utils/spacing.dart';
 import 'package:eshop/core/widgets/app_button.dart';
 import 'package:eshop/features/cart/presentation/manager/cart_cubit.dart';
 import 'package:eshop/features/cart/presentation/widgets/cart_details_item.dart';
 import 'package:eshop/features/cart/presentation/widgets/cart_product_item.dart';
+import 'package:eshop/features/cart/presentation/widgets/cart_shimmer_list.dart';
+import 'package:eshop/features/check_out/presentation/checkOut_args.dart';
 import 'package:eshop/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -54,9 +58,7 @@ class _CartScreenState extends State<CartScreen> {
           body: BlocBuilder<CartCubit, CartState>(
             builder: (context, state) {
               if (state is GetCartLoading) {
-                return Column(
-                  children: [],
-                );
+                return CartShimmerList();
               } else if (state is GetCartSuccess) {
                 return Column(
                   children: [
@@ -66,6 +68,7 @@ class _CartScreenState extends State<CartScreen> {
                               state.cartEntities.cartItemsEntities.length,
                           itemBuilder: (context, index) {
                             return CartProductItem(
+
                               onDelete: () {
                                 cubit
                                     .toggleCart(
@@ -164,7 +167,22 @@ class _CartScreenState extends State<CartScreen> {
                       body: "${state.cartEntities.subTotal} EGP",
                     ),
                     verticalSpacing(10),
-                    AppButton(onPressed: () {}, label: S().checkout),
+                    AppButton(onPressed: () {
+                      pushNamed(context, Routes.checkOutScreen,
+
+                      arguments: CheckOutArgs(
+
+                          cartItemsEntities: state.cartEntities
+                              .cartItemsEntities, totalQuantity: state.cartEntities.cartItemsEntities
+                          .fold(
+                          0,
+                              (int previousValue, element) =>
+                          previousValue + element.quantity),
+                          totalPrice: state.cartEntities.subTotal,
+
+                      )
+                      );
+                    }, label: S().checkout),
                     verticalSpacing(10)
                   ],
                 );

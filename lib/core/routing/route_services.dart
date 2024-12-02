@@ -3,6 +3,7 @@ import 'package:eshop/core/utils/safe_print.dart';
 import 'package:eshop/features/auth/login/presentation/view/screens/login_screen.dart';
 import 'package:eshop/features/auth/register/presentation/view/screens/register_screen.dart';
 import 'package:eshop/features/cart/presentation/pages/cart_screen.dart';
+import 'package:eshop/features/check_out/presentation/checkOut_args.dart';
 import 'package:eshop/features/check_out/presentation/pages/check_out_screen.dart';
 import 'package:eshop/features/main_screen/view/screen/main_screen.dart';
 import 'package:eshop/features/more/presentation/pages/privacy_screen.dart';
@@ -66,7 +67,10 @@ class RouteServices {
         );
       case Routes.checkOutScreen:
         return MaterialPageRoute(
-          builder: (_) => CheckOutScreen(),
+          builder: (_) {
+            final args = routeSettings.arguments as CheckOutArgs;
+            return CheckOutScreen(checkOutArgs: args,);
+          },
         );
       case Routes.reportScreen:
         return MaterialPageRoute(

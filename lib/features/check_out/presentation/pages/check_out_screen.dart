@@ -4,6 +4,7 @@ import 'package:eshop/core/utils/spacing.dart';
 import 'package:eshop/core/widgets/app_bar.dart';
 import 'package:eshop/core/widgets/app_button.dart';
 import 'package:eshop/features/cart/presentation/widgets/cart_product_item.dart';
+import 'package:eshop/features/check_out/presentation/checkOut_args.dart';
 import 'package:eshop/features/check_out/presentation/widgets/order_details_checkout_item.dart';
 import 'package:eshop/generated/l10n.dart';
 import 'package:flutter/material.dart';
@@ -11,8 +12,8 @@ import 'package:flutter_keyword_highlighter/flutter_keyword_highlighter.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CheckOutScreen extends StatelessWidget {
-  const CheckOutScreen({super.key});
-
+  const CheckOutScreen({super.key, required this.checkOutArgs});
+final CheckOutArgs checkOutArgs;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -26,26 +27,16 @@ class CheckOutScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    HighlightedText(
-                      content: S().deliveryAddress +
-                          ": " +
-                          "مدينة الملك عبدالعزيز، الرياض، السعودية",
-                      defaultTextStyle: TextStyle(
-                        color: MyShared.getThemeMode() == ThemeMode.dark
-                            ? AppColors.notPureWhite
-                            : AppColors.primary,
-                        fontWeight: FontWeight.w700,
-                        fontSize: 14.sp,
-                      ),
-                      highlightedTextStyles: [],
-                    ),
                     ListView.builder(
                       padding: EdgeInsets.zero,
                       physics: NeverScrollableScrollPhysics(),
-                      itemCount: 12,
+                      itemCount: checkOutArgs.cartItemsEntities.length,
                       shrinkWrap: true,
                       itemBuilder: (BuildContext context, int index) {
-                        return Text("s");
+                        return CartProductItem(
+                          quantity: checkOutArgs.cartItemsEntities[index].quantity,
+                            updateVisible: false,
+                            productEntities: checkOutArgs.cartItemsEntities[index].productEntities);
                       },
                     ),
                   ],
@@ -69,18 +60,26 @@ class CheckOutScreen extends StatelessWidget {
               child: Column(children: [
                 OrderDetailsCheckoutItem(
                   title: S().totalItems,
-                  value: "4",
-                ),
-                OrderDetailsCheckoutItem(
-                  title: S().deliveryFee,
-                  value: "4",
+                  value: checkOutArgs.totalQuantity.toString(),
                 ),
                 OrderDetailsCheckoutItem(
                   title: S().totalPrice,
-                  value: "4",
+                  value: "${checkOutArgs.totalPrice} EGP",
                   dividerVisibility: false,
                 ),
               ]),
+            ),
+            verticalSpacing(10),
+            HighlightedText(
+              content: "${S().deliveryAddress}: مدينة الملك عبدالعزيز، الرياض، السعودية",
+              defaultTextStyle: TextStyle(
+                color: MyShared.getThemeMode() == ThemeMode.dark
+                    ? AppColors.notPureWhite
+                    : AppColors.primary,
+                fontWeight: FontWeight.w700,
+                fontSize: 18.sp,
+              ),
+              highlightedTextStyles: [],
             ),
             verticalSpacing(10),
             AppButton(

@@ -3,6 +3,7 @@ import 'package:eshop/core/utils/easy_loading.dart';
 import 'package:eshop/core/utils/spacing.dart';
 import 'package:eshop/core/widgets/app_bar.dart';
 import 'package:eshop/core/widgets/divider.dart';
+import 'package:eshop/features/cart/presentation/manager/cart_cubit.dart';
 import 'package:eshop/features/fav/presentation/manager/favorite_cubit.dart';
 import 'package:eshop/features/product_details/presentation/manager/product_details_cubit.dart';
 import 'package:eshop/features/product_details/presentation/view/product_details_args.dart';
@@ -33,6 +34,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
         ),
         BlocProvider(
           create: (context) => FavoriteCubit(getIt()),
+        ),
+        BlocProvider(
+          create: (context) => CartCubit(getIt()),
         ),
       ],
       child: BlocListener<FavoriteCubit, FavoriteState>(
@@ -102,9 +106,12 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                         AddToCartItem(
                           isInCart: state.productEntities.isInCart,
                           onTap: () {
-                            state.productEntities.isInCart =
-                                !state.productEntities.isInCart;
-                            setState(() {});
+                            context.read<CartCubit>().toggleCart(id: state.productEntities.id).then((onValue){
+                              state.productEntities.isInCart =
+                              !state.productEntities.isInCart;
+                              setState(() {});
+                            });
+
                           },
                         ),
                         verticalSpacing(15),

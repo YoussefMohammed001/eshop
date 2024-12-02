@@ -18,13 +18,13 @@ final VoidCallback onTap;
         margin: EdgeInsets.symmetric(horizontal: 30.sp),
         padding: EdgeInsets.all(15.sp),
         decoration: BoxDecoration(
-            color: isInCart ?  AppColors.primary:AppColors.error,
+            color: isInCart == false ?  AppColors.primary:AppColors.error,
             borderRadius: BorderRadius.circular(10.sp),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(isInCart ?  S().addToCart : S().removeFromCart,
+            Text(isInCart == false ?  S().addToCart : S().removeFromCart,
               style: TextStyle(
                   fontSize: 16.sp,
                   fontWeight: FontWeight.w600,
